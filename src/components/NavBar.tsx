@@ -2,8 +2,15 @@
 import clsx from 'clsx'
 import { Menu } from 'lucide-react'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SwitchBtn from './SwitchBtn'
+import {
+  DARK_THEME,
+  KEY_THEME,
+  LANG_EN,
+  LANG_VI,
+  LIGHT_THEME,
+} from '@/consts/common'
 
 const linkLists = [
   { url: '/about-me', name: 'About Me' },
@@ -13,27 +20,47 @@ const linkLists = [
   { url: '/the-end', name: 'The end 123' },
 ]
 
+type Language = typeof LANG_EN | typeof LANG_VI
+
 export default function NavBar() {
   const [open, setOpen] = useState<boolean>(false)
-  const [enabled, setEnabled] = useState<boolean>(false)
-  const [lang, setLang] = useState<'en' | 'vi'>('en')
+  const [lang, setLang] = useState<Language>(LANG_EN)
+
+  const [isDark, setIsDark] = useState<boolean>(() => {
+    return (
+      localStorage.theme === DARK_THEME ||
+      (!(KEY_THEME in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    )
+  })
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark')
+      localStorage.theme = DARK_THEME
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.theme = LIGHT_THEME
+    }
+  }, [isDark])
 
   const toggleLang = () => {
-    setLang((prev) => (prev === 'en' ? 'vi' : 'en'))
+    setLang((prev: Language) => (prev === LANG_EN ? LANG_VI : LANG_EN))
   }
 
   return (
     <nav
       className={clsx(
-        'fixed z-10 w-full bg-gray-800 px-8 py-4 text-white',
+        'fixed z-10 w-full px-8 py-4',
+        'bg-bg-surface-head text-dk-text-primary dark:bg-bg-dk-secondary dark:text-dk-text-primary',
         'md:static md:flex md:min-h-screen md:max-w-64 md:py-8',
         'md:flex-1 md:flex-col md:justify-between'
       )}
     >
-      <div className="flex items-center justify-between bg-gray-800 py-3 text-white md:hidden">
+      <div className="flex items-center justify-between py-3 md:hidden">
         <h1 className="text-xl font-bold">Trung07</h1>
         <div className="flex items-center space-x-4">
-          <SwitchBtn enabled={enabled} setEnabled={setEnabled} />
+          <SwitchBtn enabled={isDark} setEnabled={setIsDark} />
           <button onClick={toggleLang} className="w-6">
             {` ${lang} `}
           </button>
@@ -54,7 +81,11 @@ export default function NavBar() {
               <Link
                 onClick={() => setOpen(false)}
                 href={link.url}
-                className="block hover:text-blue-400"
+                className={clsx(
+                  'block',
+                  'hover:text-bg-surface-head hover:bg-white',
+                  'hover:dark:bg-bg-dk-surface hover:dark:text-dk-accent'
+                )}
               >
                 {link.name}
               </Link>
@@ -64,7 +95,7 @@ export default function NavBar() {
       </div>
 
       <div className="hidden md:flex md:items-center md:space-x-4">
-        <SwitchBtn enabled={enabled} setEnabled={setEnabled} />
+        <SwitchBtn enabled={isDark} setEnabled={setIsDark} />
 
         <button onClick={toggleLang} className="w-6 bg-amber-500">
           {` ${lang} `}

@@ -20,7 +20,7 @@
   --color-warning: #f59e0b;
   --color-error: #ef4444;
   --color-info: #3b82f6;
-  --color-bg-surface-head: #4380ff;
+  --color-bg-surface-head: #2f49cf;
 
   --color-bg-dk-primary: #121212;
   --color-bg-dk-secondary: #1e1e1e;
@@ -36,5 +36,14 @@
   --color-dk-info: #60a5fa;
 }
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: sans-serif, Arial, Helvetica;
+}
+
+@layer components {
+  .share-border-btns {
+    /* prettier-ignore */
+    @apply 
+    border-border/40 dark:border-dk-border 
+    hover:dark:border-dk-accent-hover hover:border-white/80;
+  }
 }

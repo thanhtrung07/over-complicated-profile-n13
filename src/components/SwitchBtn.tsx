@@ -1,5 +1,6 @@
 import { Switch } from '@headlessui/react'
 import clsx from 'clsx'
+import { Moon, Sun } from 'lucide-react'
 
 interface ISwitchBtnProps {
   enabled: boolean
@@ -10,11 +11,12 @@ export default function SwitchBtn(props: ISwitchBtnProps) {
   const { enabled, setEnabled } = props
   return (
     <Switch
+      title="Switch theme"
       checked={enabled}
       onChange={setEnabled}
       className={clsx(
-        'group relative flex h-7 w-14 cursor-pointer rounded-full p-1 ease-in-out',
-        'bg-white/10',
+        'group h-6.4 share-border-btns relative flex w-11 cursor-pointer rounded-full border p-1 ease-in-out',
+        'dark:bg-bg-dk-surface bg-white/20',
         'focus:not-data-focus:outline-none',
         'data-checked:bg-white/10',
         'data-focus:outline data-focus:outline-white'
@@ -23,11 +25,16 @@ export default function SwitchBtn(props: ISwitchBtnProps) {
       <span
         aria-hidden="true"
         className={clsx(
-          'pointer-events-none inline-block size-5 rounded-full bg-white shadow-lg ring-0',
-          'transition duration-200 ease-in-out',
-          'translate-x-0 group-data-checked:translate-x-7'
+          'pointer-events-none inline-block size-4 rounded-full shadow-lg ring-0',
+          'translate-x-0 transition duration-200 ease-in-out group-data-checked:translate-x-4.5'
         )}
-      />
+      >
+        {enabled ? (
+          <Moon className="h-4 w-4 fill-slate-300 text-slate-400" />
+        ) : (
+          <Sun className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+        )}
+      </span>
     </Switch>
   )
 }

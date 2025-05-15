@@ -1,9 +1,4 @@
 'use client'
-import clsx from 'clsx'
-import { Menu } from 'lucide-react'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import SwitchBtn from './SwitchBtn'
 import {
   DARK_THEME,
   KEY_THEME,
@@ -12,6 +7,13 @@ import {
   LIGHT_THEME,
 } from '@/consts/common'
 import { ROUTES } from '@/consts/routes'
+import clsx from 'clsx'
+import { Bike, Briefcase, Contact, Handshake, Menu, Puzzle } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { JSX, useEffect, useMemo, useState } from 'react'
+import AsymCurveDivider from './AsymCurveDivider'
+import SwitchBtn from './SwitchBtn'
 
 const linkLists = [
   ROUTES.about,
@@ -25,19 +27,23 @@ type Language = typeof LANG_EN | typeof LANG_VI
 
 const applyTheme = (dark: boolean) => {
   const root = document.documentElement
-  if (dark) {
-    root.classList.add('dark')
-    localStorage.theme = DARK_THEME
-  } else {
-    root.classList.remove('dark')
-    localStorage.theme = LIGHT_THEME
-  }
+  root.classList.toggle('dark', dark)
+  localStorage.theme = dark ? DARK_THEME : LIGHT_THEME
+}
+
+const iconMap: Record<string, JSX.Element> = {
+  [ROUTES.about.name]: <Contact className="h-6 w-6" />,
+  [ROUTES.career.name]: <Briefcase className="h-6 w-6" />,
+  [ROUTES.skills.name]: <Puzzle className="h-6 w-6" />,
+  [ROUTES.interests.name]: <Bike className="h-6 w-6" />,
+  [ROUTES.theEnd.name]: <Handshake className="h-6 w-6" />,
 }
 
 export default function NavBar() {
   const [open, setOpen] = useState<boolean>(false)
   const [lang, setLang] = useState<Language>(LANG_EN)
   const [isDark, setIsDark] = useState<boolean>()
+  const pathname = usePathname()
 
   useEffect(() => {
     const shouldUseDark =
@@ -54,60 +60,96 @@ export default function NavBar() {
     setLang((prev: Language) => (prev === LANG_EN ? LANG_VI : LANG_EN))
   }
 
-  const ThemeAndLangControls = () => (
-    <>
-      <SwitchBtn enabled={!!isDark} setEnabled={setIsDark} />
-      <button onClick={toggleLang} className="w-6">
-        {lang}
-      </button>
-    </>
+  const ThemeAndLangControls = useMemo(
+    () => (
+      <>
+        <SwitchBtn enabled={!!isDark} setEnabled={setIsDark} />
+        <button
+          title="Switch language"
+          onClick={toggleLang}
+          className="share-border-btns w-8 cursor-pointer rounded-md border px-1 py-0.5"
+        >
+          {lang}
+        </button>
+      </>
+    ),
+    [lang, isDark]
   )
 
   return (
     <nav
       className={clsx(
-        'fixed z-10 w-full px-8 py-4',
+        'fixed z-10 w-full px-5',
         'bg-bg-surface-head text-dk-text-primary dark:bg-bg-dk-secondary dark:text-dk-text-primary',
-        'md:static md:flex md:min-h-screen md:max-w-64 md:py-8',
-        'md:flex-1 md:flex-col md:justify-between'
+        'md:static md:flex md:min-h-screen md:max-w-64 md:px-8 md:pt-7 md:pb-4',
+        'md:border-border/40 md:dark:border-dk-border md:flex-1 md:flex-col md:justify-between md:border-r'
       )}
     >
+      {/* Mobile Header */}
       <div className="flex items-center justify-between py-3 md:hidden">
         <h1 className="text-xl font-bold">Trung07</h1>
-        <div className="flex items-center space-x-4">
-          <ThemeAndLangControls />
-          <button onClick={() => setOpen(!open)} className="focus:outline-none">
+        <div className="flex items-center space-x-3">
+          {ThemeAndLangControls}
+          <button
+            onClick={() => setOpen(!open)}
+            className="border-border/40 dark:border-dk-border rounded-md border px-1 py-0.5"
+          >
             <Menu className="h-6 w-6" />
           </button>
         </div>
       </div>
+      <div className="border-border/40 dark:border-dk-border -mx-8 border-b md:hidden" />
 
       <div>
-        <div className="mb-13 hidden md:block">
+        {/* Desktop Header */}
+        <div className="hidden md:block">
           <h1 className="text-xl font-bold">Trung07</h1>
+          <AsymCurveDivider className="-mx-8 mt-3 mb-5" />
         </div>
 
-        <ul className={`space-y-4 ${open ? 'mt-4 block' : 'hidden'} md:block`}>
+        {/* Menu Items*/}
+        <ul
+          className={clsx(
+            'transition-all duration-300 ease-in-out',
+            open
+              ? 'my-4 max-h-96 translate-y-0 opacity-100'
+              : 'my-0 max-h-0 translate-y-[-10px] opacity-0',
+            '-mx-2 space-y-2 md:block md:max-h-none md:opacity-100'
+          )}
+        >
           {linkLists.map((link) => (
             <li key={link.route}>
               <Link
                 onClick={() => setOpen(false)}
                 href={link.route}
                 className={clsx(
-                  'block',
-                  'hover:text-bg-surface-head hover:bg-white',
-                  'hover:dark:bg-bg-dk-surface hover:dark:text-dk-accent'
+                  'ease flex w-3/5 space-x-2 rounded-md px-2 py-1 transition-all duration-300',
+                  link.route === pathname
+                    ? 'text-dk-text-primary dark:bg-bg-surface dark:text-text-primary bg-accent w-full'
+                    : [
+                        'hover:w-full',
+                        'hover:text-bg-surface-head hover:bg-white',
+                        'hover:dark:bg-bg-dk-surface hover:dark:text-dk-accent',
+                      ]
                 )}
               >
-                {link.name}
+                {iconMap[link.name]}
+                <span>{link.name}</span>
               </Link>
             </li>
           ))}
         </ul>
+        {open && (
+          <div className="border-border/40 dark:border-dk-border -mx-8 border-b md:hidden" />
+        )}
       </div>
 
-      <div className="hidden md:flex md:items-center md:space-x-4">
-        <ThemeAndLangControls />
+      {/* Desktop Navbar Footer */}
+      <div className="hidden md:block">
+        <AsymCurveDivider className="-mx-8 mb-2" />
+        <div className="hover-btns flex items-center space-x-4">
+          {ThemeAndLangControls}
+        </div>
       </div>
     </nav>
   )

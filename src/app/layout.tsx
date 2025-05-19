@@ -29,8 +29,8 @@ export default function RootLayout({
       <body
         className={clsx(
           `${geistSans.variable} ${geistMono.variable} antialiased`,
-          'bg-bg-primary text-text-primary',
-          'dark:bg-bg-dk-primary dark:text-dk-text-primary'
+          'bg-background text-copy',
+          'dark:bg-dark-background dark:text-dark-copy'
         )}
       >
         <div className="flex min-h-screen flex-col md:flex-row">

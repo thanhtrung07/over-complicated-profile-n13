@@ -16,9 +16,8 @@ export default function SwitchBtn(props: ISwitchBtnProps) {
       onChange={setEnabled}
       className={clsx(
         'group h-6.4 share-border-btns relative flex w-11 cursor-pointer rounded-full border p-1 ease-in-out',
-        'dark:bg-bg-dk-surface bg-white/20',
+        'bg-foreground/20 data-checked:bg-foreground/20',
         'focus:not-data-focus:outline-none',
-        'data-checked:bg-white/10',
         'data-focus:outline data-focus:outline-white'
       )}
     >

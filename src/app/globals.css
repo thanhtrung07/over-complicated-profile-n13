@@ -8,32 +8,43 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f5f5f5;
-  --color-bg-surface: #eeeeee;
-  --color-text-primary: #1a1a1a;
-  --color-text-secondary: #555555;
-  --color-border: #e0e0e0;
-  --color-accent: #3b82f6;
-  --color-accent-hover: #60a5fa;
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-info: #3b82f6;
-  --color-bg-surface-head: #2f49cf;
+  --color-background: #eaecf5;
+  --color-foreground: #fafafd;
+  --color-border: #d4d8ea;
 
-  --color-bg-dk-primary: #121212;
-  --color-bg-dk-secondary: #1e1e1e;
-  --color-bg-dk-surface: #2a2a2a;
-  --color-dk-text-primary: #e0e0e0;
-  --color-dk-text-secondary: #aaaaaa;
-  --color-dk-border: #444444;
-  --color-dk-accent: #60a5fa;
-  --color-dk-accent-hover: #818cf8;
-  --color-dk-success: #34d399;
-  --color-dk-warning: #fbbf24;
-  --color-dk-error: #f87171;
-  --color-dk-info: #60a5fa;
+  --color-copy: #191d34;
+  --color-copy-light: #3c4780;
+  --color-copy-lighter: #6472b4;
+
+  --color-dark-background: #111422;
+  --color-dark-foreground: #191d34;
+  --color-dark-border: #293156;
+
+  --color-dark-copy: #fafafd;
+  --color-dark-copy-light: #cbd0e6;
+  --color-dark-copy-lighter: #8791c5;
+
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+  --color-success-content: #000000;
+  --color-warning-content: #000000;
+  --color-error-content: #ffffff;
+
+  --color-primary: #2f4ad0;
+  --color-primary-content: #fefeff;
+  --color-primary-dark: #263aa5;
+  --color-primary-light: #586dd9;
+
+  --color-secondary: #4a2fd0;
+  --color-secondary-content: #ffffff;
+  --color-secondary-dark: #3b26a6;
+  --color-secondary-light: #6e59d9;
+
+  --color-accent: #2fd0a2;
+  --color-accent-content: #000000;
+  --color-accent-dark: #26a682;
+  --color-accent-light: #59d9b5;
 }
 body {
   font-family: sans-serif, Arial, Helvetica;
@@ -41,9 +52,6 @@ body {
 
 @layer components {
   .share-border-btns {
-    /* prettier-ignore */
-    @apply 
-    border-border/40 dark:border-dk-border 
-    hover:dark:border-dk-accent-hover hover:border-white/80;
+    @apply border-border hover:border-accent;
   }
 }

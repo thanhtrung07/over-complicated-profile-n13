@@ -12,7 +12,7 @@ export default function AsymCurveDivider({ className = '' }: IProps) {
         <div
           className={clsx(
             'absolute top-[7px] left-0 h-[9px] w-full rounded-tl-lg',
-            'border-border/40 dark:border-dk-border border-t-2'
+            'border-border dark:border-dark-border border-t-2'
           )}
         />
       </div>
@@ -20,7 +20,7 @@ export default function AsymCurveDivider({ className = '' }: IProps) {
         <div
           className={clsx(
             'absolute top-0 left-0 h-[9px] w-full rounded-br-lg',
-            'border-border/40 dark:border-dk-border border-b-2'
+            'border-border dark:border-dark-border border-b-2'
           )}
         ></div>
       </div>

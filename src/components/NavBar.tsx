@@ -80,9 +80,9 @@ export default function NavBar() {
     <nav
       className={clsx(
         'fixed z-10 w-full px-5',
-        'bg-bg-surface-head text-dk-text-primary dark:bg-bg-dk-secondary dark:text-dk-text-primary',
+        'bg-foreground text-copy dark:bg-dark-foreground dark:text-dark-copy',
         'md:static md:flex md:min-h-screen md:max-w-64 md:px-8 md:pt-7 md:pb-4',
-        'md:border-border/40 md:dark:border-dk-border md:flex-1 md:flex-col md:justify-between md:border-r'
+        'md:border-border md:dark:border-dark-border md:flex-1 md:flex-col md:justify-between md:border-r'
       )}
     >
       {/* Mobile Header */}
@@ -92,13 +92,13 @@ export default function NavBar() {
           {ThemeAndLangControls}
           <button
             onClick={() => setOpen(!open)}
-            className="border-border/40 dark:border-dk-border rounded-md border px-1 py-0.5"
+            className="border-border dark:border-dark-border rounded-md border px-1 py-0.5"
           >
             <Menu className="h-6 w-6" />
           </button>
         </div>
       </div>
-      <div className="border-border/40 dark:border-dk-border -mx-8 border-b md:hidden" />
+      <div className="border-border dark:border-dark-border -mx-8 border-b md:hidden" />
 
       <div>
         {/* Desktop Header */}
@@ -110,7 +110,7 @@ export default function NavBar() {
         {/* Menu Items*/}
         <ul
           className={clsx(
-            'transition-all duration-300 ease-in-out',
+            'transition-transform duration-300 ease-in-out',
             open
               ? 'my-4 max-h-96 translate-y-0 opacity-100'
               : 'my-0 max-h-0 translate-y-[-10px] opacity-0',
@@ -125,11 +125,11 @@ export default function NavBar() {
                 className={clsx(
                   'ease flex w-3/5 space-x-2 rounded-md px-2 py-1 transition-all duration-300',
                   link.route === pathname
-                    ? 'text-dk-text-primary dark:bg-bg-surface dark:text-text-primary bg-accent w-full'
+                    ? 'bg-dark-foreground text-dark-copy dark:bg-background dark:text-copy w-full'
                     : [
                         'hover:w-full',
-                        'hover:text-bg-surface-head hover:bg-white',
-                        'hover:dark:bg-bg-dk-surface hover:dark:text-dk-accent',
+                        'hover:bg-dark-foreground/20 hover:text-copy',
+                        'hover:dark:bg-foreground/20 hover:dark:text-dark-copy',
                       ]
                 )}
               >
@@ -140,7 +140,7 @@ export default function NavBar() {
           ))}
         </ul>
         {open && (
-          <div className="border-border/40 dark:border-dk-border -mx-8 border-b md:hidden" />
+          <div className="border-border dark:border-dark-border -mx-8 border-b md:hidden" />
         )}
       </div>
 

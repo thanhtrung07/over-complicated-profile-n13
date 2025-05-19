@@ -110,7 +110,7 @@ export default function NavBar() {
         {/* Menu Items*/}
         <ul
           className={clsx(
-            'transition-transform duration-300 ease-in-out',
+            'transition-[opacity, translate] duration-300 ease-in-out',
             open
               ? 'my-4 max-h-96 translate-y-0 opacity-100'
               : 'my-0 max-h-0 translate-y-[-10px] opacity-0',
@@ -123,7 +123,7 @@ export default function NavBar() {
                 onClick={() => setOpen(false)}
                 href={link.route}
                 className={clsx(
-                  'ease flex w-3/5 space-x-2 rounded-md px-2 py-1 transition-all duration-300',
+                  'ease transition-width flex w-3/5 space-x-2 rounded-md px-2 py-1 duration-300',
                   link.route === pathname
                     ? 'bg-dark-foreground text-dark-copy dark:bg-background dark:text-copy w-full'
                     : [

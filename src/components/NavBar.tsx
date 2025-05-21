@@ -113,8 +113,8 @@ export default function NavBar() {
             'transition-[opacity, translate] duration-300 ease-in-out',
             open
               ? 'my-4 max-h-96 translate-y-0 opacity-100'
-              : 'my-0 hidden max-h-0 translate-y-[-10px] opacity-0',
-            '-mx-2 space-y-2 md:block md:max-h-none md:opacity-100'
+              : 'pointer-events-none my-0 max-h-0 translate-y-[-10px] opacity-0',
+            '-mx-2 space-y-2 md:pointer-events-auto md:block md:max-h-none md:opacity-100'
           )}
         >
           {linkLists.map((link) => (

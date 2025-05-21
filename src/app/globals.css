@@ -8,6 +8,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  --breakpoint-xs: 32rem;
+
   --color-background: #eaecf5;
   --color-foreground: #fafafd;
   --color-border: #d4d8ea;

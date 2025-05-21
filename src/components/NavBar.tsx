@@ -81,7 +81,7 @@ export default function NavBar() {
       className={clsx(
         'fixed z-10 w-full px-5',
         'bg-foreground text-copy dark:bg-dark-foreground dark:text-dark-copy',
-        'md:static md:flex md:min-h-screen md:max-w-64 md:px-8 md:pt-7 md:pb-4',
+        'md:static md:flex md:min-h-screen md:max-w-60 md:flex-2 md:px-8 md:pt-7 md:pb-4',
         'md:border-border md:dark:border-dark-border md:flex-1 md:flex-col md:justify-between md:border-r'
       )}
     >
@@ -113,7 +113,7 @@ export default function NavBar() {
             'transition-[opacity, translate] duration-300 ease-in-out',
             open
               ? 'my-4 max-h-96 translate-y-0 opacity-100'
-              : 'my-0 max-h-0 translate-y-[-10px] opacity-0',
+              : 'my-0 hidden max-h-0 translate-y-[-10px] opacity-0',
             '-mx-2 space-y-2 md:block md:max-h-none md:opacity-100'
           )}
         >
@@ -123,7 +123,7 @@ export default function NavBar() {
                 onClick={() => setOpen(false)}
                 href={link.route}
                 className={clsx(
-                  'ease transition-width flex w-3/5 space-x-2 rounded-md px-2 py-1 duration-300',
+                  'ease transition-width flex w-7/10 space-x-2 rounded-md px-2 py-1 duration-300',
                   link.route === pathname
                     ? 'bg-dark-foreground text-dark-copy dark:bg-background dark:text-copy w-full'
                     : [

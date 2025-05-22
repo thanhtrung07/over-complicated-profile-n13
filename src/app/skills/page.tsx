@@ -16,7 +16,8 @@ import { JSX } from 'react'
 
 const workflows = [
   'Testing & Debugging',
-  'Git, Github for Teamwork',
+  'Git, Github, BitBucket for Teamwork',
+  'Git Flow & Trunk-based strategies',
   'Responsive Web & App Development',
   'Agile/Scrum methodology',
   'Can use English for Work!',
@@ -99,7 +100,7 @@ export default function Skills() {
       </div>
 
       <div>
-        <p className="text-lg font-bold">Workflow:</p>
+        <p className="text-lg font-bold">Workflows:</p>
         <ul className="mt-1 pl-4">
           {workflows.map((description, index) => (
             <li key={index} className="custom-tick-marker">

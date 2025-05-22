@@ -52,8 +52,18 @@ body {
   font-family: sans-serif, Arial, Helvetica;
 }
 
-@layer components {
+@layer utilities {
   .share-border-btns {
     @apply border-border hover:border-accent;
+  }
+  .custom-tick-marker {
+    &::before {
+      content: '✓';
+      color: var(--color-success);
+      display: inline-block;
+      width: 1rem;
+      margin-right: 8px;
+      font-weight: bold;
+    }
   }
 }

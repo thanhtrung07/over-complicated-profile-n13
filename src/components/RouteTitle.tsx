@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 interface IProps {
   title: string
@@ -7,19 +7,18 @@ interface IProps {
 export default function RouteTitle({ title }: IProps) {
   const HeadDivider = ({ className }: { className?: string }) => (
     <div
-      className={clsx(
+      className={twMerge(
         'border-border dark:border-dark-border hidden h-5 flex-1 sm:block',
-        'rounded-tl-md border-t',
         className
       )}
     />
   )
 
   return (
-    <div className="flex w-full items-end justify-center gap-4">
-      <HeadDivider />
+    <div className="flex w-full items-end justify-center gap-4 pt-1">
+      <HeadDivider className="rounded-tl-md border-t" />
       <h1 className="text text-4xl font-bold">{title}</h1>
-      <HeadDivider className="rounded-tr-md" />
+      <HeadDivider className="rounded-tr-md border-t" />
     </div>
   )
 }

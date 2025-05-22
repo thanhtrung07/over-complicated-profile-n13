@@ -1,5 +1,4 @@
 import Board from '@/components/Board'
-import RouteTitle from '@/components/RouteTitle'
 import {
   Antd,
   Bootstrap,
@@ -89,28 +88,25 @@ const TechIcons = ({ techName, icon }: TTechUsed) => (
 )
 export default function Skills() {
   return (
-    <Board>
-      <div className="flex h-full w-full flex-col items-center gap-4 py-1">
-        <RouteTitle title="Skills" />
-        <div className="flex w-full flex-col items-start gap-4">
-          <p className="text-lg font-bold">Programming Languages:</p>
-          <div className="xs:grid-cols-5 grid w-full grid-cols-3 gap-y-4">
-            {techUsed.map((techs) => (
-              <TechIcons key={techs.techName} {...techs} />
-            ))}
-          </div>
-
-          <div>
-            <p className="text-lg font-bold">Workflow:</p>
-            <ul className="mt-1 pl-4">
-              {workflows.map((description, index) => (
-                <li key={index} className="custom-tick-marker">
-                  {description}
-                </li>
-              ))}
-            </ul>
-          </div>
+    <Board title="Skills">
+      <div>
+        <p className="text-lg font-bold">Programming Languages:</p>
+        <div className="xs:grid-cols-5 mt-3 grid w-full grid-cols-3 gap-y-4">
+          {techUsed.map((techs) => (
+            <TechIcons key={techs.techName} {...techs} />
+          ))}
         </div>
+      </div>
+
+      <div>
+        <p className="text-lg font-bold">Workflow:</p>
+        <ul className="mt-1 pl-4">
+          {workflows.map((description, index) => (
+            <li key={index} className="custom-tick-marker">
+              {description}
+            </li>
+          ))}
+        </ul>
       </div>
     </Board>
   )

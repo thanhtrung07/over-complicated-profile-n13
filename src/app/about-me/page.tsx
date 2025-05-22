@@ -1,7 +1,6 @@
 import myImage from '@/assets/images/CV1_Transparent.png'
 import { Facebook, Github, LinkedIn } from '@/assets/svgs'
 import Board from '@/components/Board'
-import RouteTitle from '@/components/RouteTitle'
 import { Button } from '@headlessui/react'
 import clsx from 'clsx'
 import Image from 'next/image'
@@ -70,10 +69,7 @@ const SkillLink = ({
 
 export default function AboutMe() {
   return (
-    <Board>
-      {/* Title */}
-      <RouteTitle title="Greetings" />
-
+    <Board title="Greetings!">
       {/* Profile Section */}
       <div className="flex w-full flex-col items-center justify-around gap-4 sm:flex-row sm:py-1">
         <div className="order-2 flex flex-col items-center sm:order-1">
@@ -91,9 +87,12 @@ export default function AboutMe() {
           </h1>
         </div>
         <Image
-          width={128}
-          height={128}
-          className="border-accent bg-primary-light order-1 rounded-full border-2 text-center sm:order-2 sm:ml-12"
+          width={192}
+          height={192}
+          className={clsx(
+            'border-accent bg-primary-light order-1 h-32 w-32 rounded-full border-2 text-center',
+            'sm:order-2 sm:ml-12 lg:h-48 lg:w-48'
+          )}
           src={myImage}
           alt="Profile"
         />

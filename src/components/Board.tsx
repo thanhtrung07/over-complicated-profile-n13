@@ -9,7 +9,7 @@ interface IProps {
 
 export default function Board({ children, className, title }: IProps) {
   return (
-    <div
+    <section
       className={twMerge(
         'bg-foreground dark:bg-dark-foreground h-full w-full max-w-3xl rounded-xl px-4 py-5',
         'flex h-full w-full flex-col items-center gap-4',
@@ -20,6 +20,6 @@ export default function Board({ children, className, title }: IProps) {
       <div className="flex h-full min-h-[60vh] w-full flex-col justify-around gap-4 py-1">
         {children}
       </div>
-    </div>
+    </section>
   )
 }

@@ -71,7 +71,7 @@ export default function AboutMe() {
   return (
     <Board title="Greetings!">
       {/* Profile Section */}
-      <div className="flex w-full flex-col items-center justify-around gap-4 sm:flex-row sm:py-1">
+      <section className="flex w-full flex-col items-center justify-around gap-4 sm:flex-row sm:py-1">
         <div className="order-2 flex flex-col items-center sm:order-1">
           <h1 className="text-3xl font-bold">
             <span className="text-accent-dark dark:text-accent-light">Hi</span>,
@@ -96,10 +96,10 @@ export default function AboutMe() {
           src={myImage}
           alt="Profile"
         />
-      </div>
+      </section>
 
       {/* Description */}
-      <div className="flex flex-col items-start gap-4">
+      <section className="flex flex-col items-start gap-4">
         <div>
           <p className="text-justify">
             Tôi là lập trình viên với 4 năm kinh nghiệm về Javascript. Thích
@@ -131,10 +131,10 @@ export default function AboutMe() {
             </span>
           </>
         </SkillLink>
-      </div>
+      </section>
 
       {/* Contacts + Resume */}
-      <div className="xs:flex-row xs:gap-0 mt-2 flex w-full flex-col items-center justify-between gap-6">
+      <footer className="xs:flex-row xs:gap-0 mt-2 flex w-full flex-col items-center justify-between gap-6">
         <div className="xs:order-1 xs:justify-start order-2 flex flex-1 items-center justify-center gap-4">
           {contacts.map((contact) => (
             <ContactIcon key={contact.name} {...contact} />
@@ -150,7 +150,7 @@ export default function AboutMe() {
             Download Resume
           </Button>
         </div>
-      </div>
+      </footer>
     </Board>
   )
 }

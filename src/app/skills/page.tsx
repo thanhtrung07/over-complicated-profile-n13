@@ -90,16 +90,16 @@ const TechIcons = ({ techName, icon }: TTechUsed) => (
 export default function Skills() {
   return (
     <Board title="Skills">
-      <div>
+      <section>
         <p className="text-lg font-bold">Programming Languages:</p>
         <div className="xs:grid-cols-5 mt-3 grid w-full grid-cols-3 gap-y-4">
           {techUsed.map((techs) => (
             <TechIcons key={techs.techName} {...techs} />
           ))}
         </div>
-      </div>
+      </section>
 
-      <div>
+      <section>
         <p className="text-lg font-bold">Workflows:</p>
         <ul className="mt-1 pl-4">
           {workflows.map((description, index) => (
@@ -108,7 +108,7 @@ export default function Skills() {
             </li>
           ))}
         </ul>
-      </div>
+      </section>
     </Board>
   )
 }

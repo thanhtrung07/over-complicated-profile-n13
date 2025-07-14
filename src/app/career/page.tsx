@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 const WorkListItem = ({ children }: { children: ReactNode }) => (
   <li className="flex items-center gap-2">
     <span className="text-primary dark:text-primary-light text-sm">➤</span>
-    {children}
+    <span>{children}</span>
   </li>
 )
 

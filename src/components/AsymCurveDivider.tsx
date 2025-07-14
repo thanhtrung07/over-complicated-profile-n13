@@ -7,7 +7,7 @@ interface IProps {
 
 export default function AsymCurveDivider({ className = '' }: IProps) {
   return (
-    <div className={twMerge('hidden h-[16px] md:flex', '', className)}>
+    <div className={twMerge('hidden h-[16px] md:flex', className)}>
       <div className="relative flex-1">
         <div
           className={clsx(

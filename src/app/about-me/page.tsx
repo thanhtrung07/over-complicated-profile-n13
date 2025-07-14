@@ -40,8 +40,10 @@ const ContactIcon = ({ name, url, icon, backgroundClass }: TContact) => (
     href={url}
     target="_blank"
     rel="noopener noreferrer"
+    title={name}
     aria-label={name}
     className={clsx(
+      'hover:border-accent-dark hover:dark:border-accent-light hover:border-1',
       'inline-flex h-7 w-7 items-center justify-center rounded-full',
       backgroundClass
     )}

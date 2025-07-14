@@ -76,6 +76,12 @@ export default function NavBar() {
     [lang, isDark]
   )
 
+  const Nickname = () => (
+    <h1 className="text-xl font-bold">
+      Trung<span className="text-primary dark:text-primary-light">07</span>
+    </h1>
+  )
+
   return (
     <nav
       className={clsx(
@@ -87,7 +93,7 @@ export default function NavBar() {
     >
       {/* Mobile Header */}
       <div className="flex items-center justify-between py-3 md:hidden">
-        <h1 className="text-xl font-bold">Trung07</h1>
+        <Nickname />
         <div className="flex items-center space-x-3">
           {ThemeAndLangControls}
           <button
@@ -103,7 +109,7 @@ export default function NavBar() {
       <div>
         {/* Desktop Header */}
         <div className="hidden md:block">
-          <h1 className="text-xl font-bold">Trung07</h1>
+          <Nickname />
           <AsymCurveDivider className="-mx-8 mt-3 mb-5" />
         </div>
 

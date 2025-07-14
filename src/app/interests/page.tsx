@@ -4,7 +4,7 @@ import hkImg from '@/assets/images/hollow_knight.jpg'
 import oniImg from '@/assets/images/oni.jpg'
 import svImg from '@/assets/images/stardew.jpg'
 import Image from 'next/image'
-import { BLUR_DATA_URL } from '@/consts/common'
+import { JPEG_BLUR_DATA_URL } from '@/consts/common'
 
 const games = [
   { name: 'Oni', img: oniImg },
@@ -39,7 +39,7 @@ export default function Interests() {
               key={game.name}
               width={460}
               height={215}
-              blurDataURL={BLUR_DATA_URL}
+              blurDataURL={JPEG_BLUR_DATA_URL}
               src={game.img}
               alt="Indie Game"
             />

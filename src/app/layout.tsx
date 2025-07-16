@@ -2,15 +2,22 @@ import './globals.css'
 import NavBar from '@/components/NavBar'
 import clsx from 'clsx'
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Unkempt, Space_Grotesk, Notable } from 'next/font/google'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const unkempt = Unkempt({
+  weight: '400',
   subsets: ['latin'],
+  variable: '--font-unkempt',
 })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+})
+
+const notable = Notable({
+  weight: '400',
+  variable: '--font-notable',
   subsets: ['latin'],
 })
 
@@ -25,10 +32,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${unkempt.variable} ${spaceGrotesk.variable} ${notable.variable}`}
+    >
       <body
         className={clsx(
-          `${geistSans.variable} ${geistMono.variable} antialiased`,
+          `font-main antialiased`,
           'bg-background text-copy',
           'dark:bg-dark-background dark:text-dark-copy'
         )}

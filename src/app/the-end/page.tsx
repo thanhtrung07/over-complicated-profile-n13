@@ -3,7 +3,9 @@ import { GIF_BLUR_DATA_URL } from '@/consts/common'
 import Image from 'next/image'
 
 const MemeText = ({ text }: { text: string }) => (
-  <p className="xs:text-3xl text-center text-2xl lg:text-4xl">{text}</p>
+  <p className="font-meme xs:text-3xl text-center text-2xl lg:text-4xl">
+    {text}
+  </p>
 )
 
 export default function TheEnd() {

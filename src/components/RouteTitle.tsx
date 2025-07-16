@@ -8,7 +8,7 @@ export default function RouteTitle({ title }: IProps) {
   const HeadDivider = ({ className }: { className?: string }) => (
     <div
       className={twMerge(
-        'border-border dark:border-dark-border hidden h-5 flex-1 sm:block',
+        'border-border dark:border-dark-border hidden h-5 flex-1 border-t-2 sm:block',
         className
       )}
     />

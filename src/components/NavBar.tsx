@@ -77,7 +77,7 @@ export default function NavBar() {
   )
 
   const Nickname = () => (
-    <h1 className="text-xl font-bold">
+    <h1 className={clsx('font-brand text-2xl')}>
       Trung<span className="text-primary dark:text-primary-light">07</span>
     </h1>
   )

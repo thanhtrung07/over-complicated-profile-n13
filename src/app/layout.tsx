@@ -2,13 +2,7 @@ import './globals.css'
 import NavBar from '@/components/NavBar'
 import clsx from 'clsx'
 import type { Metadata } from 'next'
-import { Unkempt, Space_Grotesk, Notable } from 'next/font/google'
-
-const unkempt = Unkempt({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-unkempt',
-})
+import { Gluten, Space_Grotesk, Notable } from 'next/font/google'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -18,6 +12,12 @@ const spaceGrotesk = Space_Grotesk({
 const notable = Notable({
   weight: '400',
   variable: '--font-notable',
+  subsets: ['latin'],
+})
+
+const gluten = Gluten({
+  weight: '300',
+  variable: '--font-gluten',
   subsets: ['latin'],
 })
 
@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${unkempt.variable} ${spaceGrotesk.variable} ${notable.variable}`}
+      className={`${gluten.variable} ${spaceGrotesk.variable} ${notable.variable}`}
     >
       <body
         className={clsx(

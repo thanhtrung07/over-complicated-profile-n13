@@ -5,7 +5,7 @@
 @theme inline {
   --font-main: var(--font-space-grotesk);
   --font-brand: var(--font-notable);
-  --font-meme: var(--font-unkempt);
+  --font-meme: var(--font-gluten);
 }
 
 @theme {

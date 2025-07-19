@@ -67,7 +67,7 @@ const techUsed: TTechUsed[] = [
   },
   {
     techName: 'ExpressJS',
-    icon: <Express className="bg-foreground h-12 w-12 rounded-md p-[2px]" />,
+    icon: <Express className="h-12 w-12 dark:fill-white" />,
   },
 ]
 

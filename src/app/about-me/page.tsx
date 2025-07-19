@@ -1,38 +1,46 @@
 import myImage from '@/assets/images/CV1_Transparent.png'
-import { Facebook, Github, LinkedIn } from '@/assets/svgs'
+import { Github, LinkedIn, Twitter } from '@/assets/svgs'
 import Board from '@/components/Board'
 import { Button } from '@headlessui/react'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { JSX } from 'react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
+import { LANG_VI } from '@/consts/common'
 
 type TContact = {
   name: string
-  url: string
+  url?: string
   backgroundClass: string
   icon: JSX.Element
+}
+
+const cvLinkEng = '/NguyenThanhTrung_Resume_Frontend_eng.pdf'
+const cvLinkVi = '/NguyenThanhTrung_Resume_Frontend_vi.pdf'
+
+const getCvLink = (locale: string) => {
+  return locale === LANG_VI ? cvLinkVi : cvLinkEng
 }
 
 const contacts: TContact[] = [
   {
     name: 'Github',
-    url: 'https://www.google.com.vn/',
+    url: process.env.NEXT_PUBLIC_GITHUB_URL,
     backgroundClass: 'bg-foreground',
     icon: <Github className="h-7 w-7" />,
   },
   {
     name: 'LinkedIn',
-    url: 'https://www.google.com.vn/',
+    url: process.env.NEXT_PUBLIC_LINKEDIN_URL,
     backgroundClass: 'bg-[#0076b2]',
     icon: <LinkedIn className="h-5 w-5" />,
   },
   {
-    name: 'Facebook',
-    url: 'https://www.google.com.vn/',
-    backgroundClass: 'bg-[#3d5a98]',
-    icon: <Facebook className="h-5 w-5" />,
+    name: 'Twitter',
+    url: process.env.NEXT_PUBLIC_X_URL,
+    backgroundClass: 'bg-[#2f2f2f] border-foreground border',
+    icon: <Twitter className="h-4 w-4 fill-white" />,
   },
 ]
 
@@ -72,6 +80,7 @@ const SkillLink = ({
 
 export default function AboutMe() {
   const t = useTranslations('AboutMe')
+  const locale = useLocale()
 
   return (
     <Board title={t('title')}>
@@ -136,14 +145,16 @@ export default function AboutMe() {
           ))}
         </div>
         <div className="xs:justify-end xs:order-2 order-1 flex w-full flex-1 items-center justify-center">
-          <Button
-            className={clsx(
-              'bg-primary dark:bg-primary-light text-primary-content',
-              'min-w-2/3 rounded-md px-4 py-2'
-            )}
-          >
-            {t('downloadCV')}
-          </Button>
+          <a href={getCvLink(locale)} download>
+            <Button
+              className={clsx(
+                'bg-primary text-primary-content hover:bg-primary-dark cursor-pointer',
+                'min-w-2/3 rounded-md px-4 py-2'
+              )}
+            >
+              {t('downloadCV')}
+            </Button>
+          </a>
         </div>
       </footer>
     </Board>

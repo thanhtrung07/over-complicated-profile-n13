@@ -5,7 +5,7 @@ export const ROUTES = {
   },
   about: {
     route: '/about-me',
-    name: 'About Me',
+    name: 'AboutMe',
   },
   skills: {
     route: '/skills',
@@ -21,6 +21,6 @@ export const ROUTES = {
   },
   theEnd: {
     route: '/the-end',
-    name: 'The End',
+    name: 'TheEnd',
   },
 }

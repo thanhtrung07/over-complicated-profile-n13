@@ -1,5 +1,6 @@
 import Board from '@/components/Board'
 import { GIF_BLUR_DATA_URL } from '@/consts/common'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 const MemeText = ({ text }: { text: string }) => (
@@ -9,22 +10,24 @@ const MemeText = ({ text }: { text: string }) => (
 )
 
 export default function TheEnd() {
+  const t = useTranslations('TheEnd')
+
   return (
-    <Board title="The End">
+    <Board title={t('title')}>
       <section className="space-y-8">
         <div className="space-y-1 text-lg">
           <p>
-            Cuối cùng, xin được gửi lời{' '}
+            {t('farewell.opening')}
             <span className="text-accent-dark dark:text-accent-light font-bold">
-              Cảm ơn
+              {t('farewell.thanks')}
             </span>{' '}
-            tới bạn, người đã dành thời gian để đọc hết portolio này 🤗🤗🤗{' '}
+            {t('farewell.closing')}
           </p>
-          <p>Mong rằng sẽ có cơ hội được hợp tác cùng bạn!</p>
+          <p>{t('hopeful')}</p>
         </div>
 
         <div className="flex flex-col items-center gap-2 px-[10%]">
-          <MemeText text="Tôi khi thiết kế Portfolio" />
+          <MemeText text={t('meme.top')} />
           <Image
             src="/Guy_look_at_comp.gif"
             alt="meme_look_at_computer"
@@ -35,7 +38,7 @@ export default function TheEnd() {
             placeholder="blur"
             blurDataURL={GIF_BLUR_DATA_URL}
           />
-          <MemeText text="Người xem Portfolio của tôi" />
+          <MemeText text={t('meme.bottom')} />
         </div>
       </section>
     </Board>

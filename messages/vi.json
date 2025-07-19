@@ -1,0 +1,101 @@
+{
+  "AboutMe": {
+    "title": "Giới thiệu",
+    "introduction": {
+      "hi": "Hi",
+      "iam": ", mình là Nguyễn",
+      "name": "Thành Trung"
+    },
+    "opening": "Mình là lập trình viên với 4 năm kinh nghiệm về Javascript. Thích code và luôn hướng đến những hệ thống đơn giản nhưng tối ưu và chuyên nghiệp. Mình là một người hòa đồng, nghiêm túc và có trách nhiệm với công việc.",
+    "quite":{
+      "label": "Châm ngôn:",
+      "text": "When I take on a job, I make sure it's done."
+    },
+    "stacksFe":{
+      "text": " Có kinh nghiệm làm việc với ",
+      "techs": "ReactJS (NextJS, Hook, Redux Toolkit), Bootstrap, Antd, TailwindCSS, Axios và các công nghệ khác."
+    },
+    "stacksBe":{
+      "text": " Có hiểu biết về ",
+      "techs": "NodeJS (ExpressJS), MongoDB, MySQL, Redis và các công nghệ khác."
+    },
+    "downloadCV": "Tải về CV (tiếng việt)"
+  },
+  "Career": {
+    "title": "Trình độ",
+    "jobInsurance": {
+      "title": "Ứng dụng đại lý bảo hiểm",
+      "position": "Lập trình Mobile tại FSoft",
+      "size": "Số lượng thành viên: 25",
+      "description": "Phát triển ứng dụng mobile với <strong>React Native</strong> giúp đại lý bảo hiểm quản lý khách hàng, theo dõi chỉ tiêu cá nhân & đội nhóm, tư vấn bán hàng, tham gia chiến dịch truyền thông và cập nhật tin tức nội bộ.",
+      "bullet1": "Xây dựng giao diện bằng <strong>React Native</strong>, viết test với <strong>Jest-Cucumber</strong>",
+      "bullet2": "Tham gia <strong>đề xuất giải pháp, estimate, review & merge PR</strong>",
+      "bullet3": "<strong>Hỗ trợ onboarding</strong> và <strong>phối hợp chặt chẽ với backend, tester, BA</strong>",
+      "bullet4": "<strong>Làm việc trực tiếp với khách hàng</strong> để làm rõ yêu cầu và xử lý lỗi",
+      "bullet5": "Tối ưu hiệu năng và xử lý lỗi giao diện"
+    },
+    "jobCreditCard": {
+      "title": "Ứng dụng tín dụng",
+      "position": "Lập trình Frontend tại FSoft",
+      "size": "Số lượng thành viên: 22",
+      "description": "Phát triển hệ thống gợi ý khoản vay và ưu đãi cho người dùng cuối, dựa trên dữ liệu quét gương mặt và căn cước. Hệ thống gồm 4 nền tảng: web admin cho khách hàng, web admin cho ngân hàng đối tác, SPA web app & mobile app cho end user",
+      "bullet1": "Phát triển frontend với <strong>ReactJS & React Native</strong>, viết unit test bằng <strong>Jest</strong>",
+      "bullet2": "<strong>Đề xuất & triển khai giải pháp kỹ thuật</strong>",
+      "bullet3": "<strong>Phối hợp với backend, tester, BA</strong> để đảm bảo tiến độ",
+      "bullet4": "Tối ưu hiệu năng và xử lý lỗi giao diện"
+    },
+    "jobMigrate": {
+      "title": "Startup Hundr Tech",
+      "position": "Lập trình Web",
+      "size": "Số lượng thành viên: 3-5",
+      "description": "Thực hiện migrate UI của hệ thống web từ nền tảng cũ <strong> (HTML/CSS/jQuery)</strong> sang <strong>ReactJS</strong>. Dự án tập trung vào cải thiện hiệu suất, tính tái sử dụng, khả năng bảo trì và khả mở của mã nguồn.",
+      "bullet1": "Phát triển giao diện với <strong>ReactJS & Bootstrap</strong> theo tasks",
+      "bullet2": "<strong>Đề xuất & triển khai giải pháp kỹ thuật</strong> phù hợp yêu cầu",
+      "bullet3": "<strong>Phối hợp backend</strong> khi dự án cần migrate toàn bộ hệ thống",
+      "bullet4": "Tối ưu hiệu năng và xử lý lỗi giao diện"
+    }
+  },
+  "Skills": {
+    "title": "Kỹ năng",
+    "programLng": "Ngôn ngữ lập trình:",
+    "practices": {
+      "label": "Năng lực:",
+      "debug": "Testing & Debugging",
+      "git": "Làm việc nhóm với Git, Github, BitBucket",
+      "workflow": "Luồng GitFlow & Trunk-based development",
+      "responsive": "Lập trình responsive Web & App",
+      "methodology": "Mô hình Agile/Scrum",
+      "english": "Có thể giao tiếp tiếng Anh nếu cần thiết!"
+    }
+  },
+  "Interests": {
+    "title": "Sở thích",
+    "pingpong": "Mình thích chơi bóng bàn, vì nó vui và tốt cho khả năng phản xạ và sự tập trung",
+    "running": {
+      "text": "Mình cũng thường hay chạy bộ giúp rèn luyện ý chí ",
+      "hidden": "và vì ngồi nhiều quá thì trĩ"
+    },
+    "indie": "Và mình rất thích các tựa game indie, dù thường không sở hữu đồ họa khủng ngốn VGA, chúng lại có những giá trị nghệ thuật đầy sáng tạo cùng cách tiếp cận vô cùng độc đáo."
+  },
+  "TheEnd": {
+    "title": "Lời kết",
+    "farewell": {
+      "opening": "Cuối cùng, xin ",
+      "thanks": "cảm ơn",
+      "closing": "bạn đã dành thời gian để đọc hết portolio này 🤗🤗🤗"
+    },
+    "hopeful": "Mong rằng sẽ có cơ hội được hợp tác cùng bạn!",
+    "meme": {
+      "top": "Tôi khi thiết kế Portfolio",
+      "bottom": "Người xem Portfolio của tôi"
+    }
+  },
+  "Navbar": {
+    "aboutMe": "Giới thiệu",
+    "career": "Trình độ",
+    "skills": "Kỹ năng",
+    "interests": "Sở thích",
+    "theEnd": "Lời kết",
+    "switchLang": "Swicth to English"
+  }
+}

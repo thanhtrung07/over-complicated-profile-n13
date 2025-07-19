@@ -1,5 +1,6 @@
 import Board from '@/components/Board'
-import { ReactNode } from 'react'
+import { ReactNode, useMemo } from 'react'
+import { useTranslations } from 'next-intl'
 
 const WorkListItem = ({ children }: { children: ReactNode }) => (
   <li className="flex items-center gap-2">
@@ -16,91 +17,32 @@ interface IJobItem {
   bullets: ReactNode[]
 }
 
-const jobData: IJobItem[] = [
-  {
-    title: 'Agency insurance mobile app',
-    position: 'Mobile Developer at FSoft',
-    size: 'Team size: 25',
+const getJobData = (t: ReturnType<typeof useTranslations>) => {
+  const jobs = [
+    { jobKey: 'jobInsurance', nBullet: 5 },
+    { jobKey: 'jobCreditCard', nBullet: 4 },
+    { jobKey: 'jobMigrate', nBullet: 4 },
+  ]
+  return jobs.map(({ jobKey, nBullet }) => ({
+    title: t(`${jobKey}.title`),
+    position: t(`${jobKey}.position`),
+    size: t(`${jobKey}.size`),
     description: (
       <>
-        Phát triển ứng dụng mobile với <strong>React Native</strong> giúp đại lý
-        bảo hiểm quản lý khách hàng, theo dõi chỉ tiêu cá nhân & đội nhóm, tư
-        vấn bán hàng, tham gia chiến dịch truyền thông và cập nhật tin tức nội
-        bộ.
+        {t.rich(`${jobKey}.description`, {
+          strong: (chunk) => <strong>{chunk}</strong>,
+        })}
       </>
     ),
-    bullets: [
+    bullets: [...Array(nBullet).keys()].map((i) => (
       <>
-        Xây dựng giao diện bằng <strong>React Native</strong>, viết test với{' '}
-        <strong>Jest-Cucumber</strong>
-      </>,
-      <>
-        Tham gia <strong>đề xuất giải pháp, estimate, review & merge PR</strong>
-      </>,
-      <>
-        <strong>Hỗ trợ onboarding</strong> và{' '}
-        <strong>phối hợp chặt chẽ với backend, tester, BA</strong>
-      </>,
-      <>
-        <strong>Làm việc trực tiếp với khách hàng</strong> để làm rõ yêu cầu và
-        xử lý lỗi
-      </>,
-      <>Tối ưu hiệu năng và xử lý lỗi giao diện.</>,
-    ],
-  },
-  {
-    title: 'App Tín dụng',
-    position: 'Front End Developer at FSoft',
-    size: 'Team size: 22',
-    description: (
-      <>
-        Phát triển hệ thống gợi ý khoản vay và ưu đãi cho người dùng cuối, dựa
-        trên dữ liệu quét gương mặt và căn cước. Hệ thống gồm 4 nền tảng: web
-        admin cho khách hàng, web admin cho ngân hàng đối tác, SPA web app &
-        mobile app cho end user
+        {t.rich(`${jobKey}.bullet${i + 1}`, {
+          strong: (chunk) => <strong>{chunk}</strong>,
+        })}
       </>
-    ),
-    bullets: [
-      <>
-        Phát triển frontend với <strong>ReactJS & React Native</strong>, viết
-        unit test bằng <strong>Jest</strong>
-      </>,
-      <>
-        <strong>Đề xuất & triển khai giải pháp kỹ thuật</strong> ở phase 2 & 3
-      </>,
-      <>
-        <strong>Phối hợp với backend, tester, BA</strong> để đảm bảo tiến độ
-      </>,
-      <>Tối ưu hiệu năng và xử lý lỗi giao diện.</>,
-    ],
-  },
-  {
-    title: 'Startup Hundr Tech',
-    position: 'Front End Developer',
-    size: 'Team size: 3-5',
-    description: (
-      <>
-        Thực hiện migrate UI của hệ thống web từ nền tảng cũ
-        <strong> (HTML/CSS/jQuery)</strong> sang <strong>ReactJS</strong>. Dự án
-        tập trung vào cải thiện hiệu suất, tính tái sử dụng, khả năng bảo trì và
-        khả mở của mã nguồn.
-      </>
-    ),
-    bullets: [
-      <>
-        Phát triển giao diện với <strong>ReactJS & Bootstrap</strong> theo task
-        trên Jira
-      </>,
-      <>
-        <strong>Đề xuất & triển khai giải pháp kỹ thuật</strong> phù hợp yêu cầu
-      </>,
-      <>
-        <strong>Phối hợp backend</strong> khi dự án cần migrate toàn bộ hệ thống
-      </>,
-      <>Tối ưu hiệu năng và xử lý lỗi giao diện.</>,
-    ],
-  },
-]
+    )),
+  }))
+}
 
 const JobDescription = ({
   title,
@@ -129,8 +71,11 @@ const JobDescription = ({
 )
 
 export default function Career() {
+  const t = useTranslations('Career')
+  const jobData = useMemo(() => getJobData(t), [t])
+
   return (
-    <Board title="Career">
+    <Board title={t('title')}>
       {jobData.map((job, index) => (
         <JobDescription key={index} {...job} />
       ))}

@@ -14,6 +14,9 @@ import { usePathname } from 'next/navigation'
 import { JSX, useEffect, useMemo, useState } from 'react'
 import AsymCurveDivider from './AsymCurveDivider'
 import SwitchBtn from './SwitchBtn'
+import { useTranslations } from 'next-intl'
+import { setUserLocale } from '@/services/locales'
+import { Language } from '@/i18n/config'
 
 const linkLists = [
   ROUTES.about,
@@ -23,7 +26,22 @@ const linkLists = [
   ROUTES.theEnd,
 ]
 
-type Language = typeof LANG_EN | typeof LANG_VI
+const getLinkLabel = (t: ReturnType<typeof useTranslations>, name: string) => {
+  switch (name) {
+    case ROUTES.about.name:
+      return t('aboutMe')
+    case ROUTES.career.name:
+      return t('career')
+    case ROUTES.skills.name:
+      return t('skills')
+    case ROUTES.interests.name:
+      return t('interests')
+    case ROUTES.theEnd.name:
+      return t('theEnd')
+    default:
+      return name
+  }
+}
 
 const applyTheme = (dark: boolean) => {
   const root = document.documentElement
@@ -39,11 +57,14 @@ const iconMap: Record<string, JSX.Element> = {
   [ROUTES.theEnd.name]: <Handshake className="h-6 w-6" />,
 }
 
-export default function NavBar() {
+export default function NavBar({ locale }: { locale: Language }) {
   const [open, setOpen] = useState<boolean>(false)
-  const [lang, setLang] = useState<Language>(LANG_EN)
+  const [lang, setLang] = useState<Language>(
+    locale === LANG_EN ? LANG_VI : LANG_EN
+  )
   const [isDark, setIsDark] = useState<boolean>()
   const pathname = usePathname()
+  const t = useTranslations('Navbar')
 
   useEffect(() => {
     const shouldUseDark =
@@ -56,25 +77,25 @@ export default function NavBar() {
     applyTheme(shouldUseDark)
   }, [isDark])
 
-  const toggleLang = () => {
-    setLang((prev: Language) => (prev === LANG_EN ? LANG_VI : LANG_EN))
-  }
+  const ThemeAndLangControls = useMemo(() => {
+    const toggleLang = () => {
+      setUserLocale(lang)
+      setLang((prev: Language) => (prev === LANG_EN ? LANG_VI : LANG_EN))
+    }
 
-  const ThemeAndLangControls = useMemo(
-    () => (
+    return (
       <>
         <SwitchBtn enabled={!!isDark} setEnabled={setIsDark} />
         <button
-          title="Switch language"
+          title={t('switchLang')}
           onClick={toggleLang}
           className="share-border-btns w-8 cursor-pointer rounded-md border px-1 py-0.5"
         >
-          {lang}
+          {`${lang}`}
         </button>
       </>
-    ),
-    [lang, isDark]
-  )
+    )
+  }, [t, lang, isDark])
 
   const Nickname = () => (
     <h1 className={clsx('font-brand text-2xl')}>
@@ -140,7 +161,7 @@ export default function NavBar() {
                 )}
               >
                 {iconMap[link.name]}
-                <span>{link.name}</span>
+                <span>{getLinkLabel(t, link.name)}</span>
               </Link>
             </li>
           ))}

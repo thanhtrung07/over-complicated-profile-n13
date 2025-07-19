@@ -6,6 +6,7 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { JSX } from 'react'
+import { useTranslations } from 'next-intl'
 
 type TContact = {
   name: string
@@ -70,14 +71,18 @@ const SkillLink = ({
 )
 
 export default function AboutMe() {
+  const t = useTranslations('AboutMe')
+
   return (
-    <Board title="Greetings!">
+    <Board title={t('title')}>
       {/* Profile Section */}
       <section className="flex w-full flex-col items-center justify-around gap-4 sm:flex-row sm:py-1">
         <div className="order-2 flex flex-col items-center sm:order-1">
           <h1 className="text-3xl font-bold">
-            <span className="text-accent-dark dark:text-accent-light">Hi</span>,
-            I am Nguyen
+            <span className="text-accent-dark dark:text-accent-light">
+              {t('introduction.hi')}
+            </span>
+            {t('introduction.iam')}
           </h1>
           <h1
             className={clsx(
@@ -85,7 +90,7 @@ export default function AboutMe() {
               'text-right align-bottom text-3xl font-bold sm:translate-x-15'
             )}
           >
-            Thanh Trung
+            {t('introduction.name')}
           </h1>
         </div>
         <Image
@@ -103,34 +108,22 @@ export default function AboutMe() {
       {/* Description */}
       <section className="flex flex-col items-start gap-4">
         <div>
+          <p className="text-justify">{t('opening')}</p>
           <p className="text-justify">
-            Tôi là lập trình viên với 4 năm kinh nghiệm về Javascript. Thích
-            code và luôn hướng đến những hệ thống đơn giản nhưng tối ưu và
-            chuyên nghiệp. Tôi là một người nghiêm túc với công việc, hòa đồng
-            và có tinh thần đồng đội cao.
-          </p>
-          <p className="text-justify">
-            Châm ngôn:{' '}
-            <span className="italic">
-              {"When I take on a job, I make sure it\'s done."}
-            </span>
+            {t('quite.label') + ' '}
+            <span className="italic">{t('quite.text')}</span>
           </p>
         </div>
         <SkillLink category="Front-end">
           <>
-            {' Có kinh nghiệm làm việc với '}
-            <span className="font-bold">
-              ReactJS (NextJS, Hook, Redux Toolkit), Bootstrap, Antd
-              ,TailwindCSS, Axios và các công nghệ khác.
-            </span>
+            {t('stacksFe.text')}
+            <span className="font-bold">{t('stacksFe.techs')}</span>
           </>
         </SkillLink>
         <SkillLink category="Back-end">
           <>
-            {' Có hiểu biết về '}
-            <span className="font-bold">
-              NodeJS (ExpressJS), MongoDB, MySQL, Redis và các công nghệ khác.
-            </span>
+            {t('stacksBe.text')}
+            <span className="font-bold">{t('stacksBe.techs')}</span>
           </>
         </SkillLink>
       </section>
@@ -149,7 +142,7 @@ export default function AboutMe() {
               'min-w-2/3 rounded-md px-4 py-2'
             )}
           >
-            Download Resume
+            {t('downloadCV')}
           </Button>
         </div>
       </footer>

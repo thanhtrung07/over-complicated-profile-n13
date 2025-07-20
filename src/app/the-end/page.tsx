@@ -1,7 +1,19 @@
 import Board from '@/components/Board'
 import { GIF_BLUR_DATA_URL } from '@/consts/common'
+import { GMProps } from '@/types'
+import { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
+
+export async function generateMetadata({ params }: GMProps): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'Metadata.theEnd' })
+
+  return {
+    title: t('title'),
+  }
+}
 
 const MemeText = ({ text }: { text: string }) => (
   <p className="font-meme xs:text-3xl mt-1 text-center text-2xl lg:text-4xl">

@@ -97,5 +97,29 @@
     "interests": "Interests",
     "theEnd": "The End",
     "switchLang": "Chuyển sang Tiếng Việt"
-  }
+  },
+  "NotFound": {
+    "title": "Whoops!!!",
+    "description": "The URL you are looking for does not exist or has been removed.",
+    "backHome": "Choose a page from the navigation bar or go back ",
+    "home": "Home"
+  },
+   "Metadata": {
+    "description": "Portfolio of Trung07, a random guy that enjoy coding",
+    "aboutMe": {
+      "title": "About Me | Trung07"
+    },
+    "career": {
+      "title": "Career | Trung07"
+    },
+    "skills": {
+      "title": "Skills | Trung07"
+    },
+    "interests": {
+      "title": "Interests | Trung07"
+    },
+    "theEnd": {
+      "title": "The End | Trung07"
+    }
+  } 
 }

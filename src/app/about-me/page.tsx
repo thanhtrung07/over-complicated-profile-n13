@@ -8,6 +8,18 @@ import Link from 'next/link'
 import { JSX } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { LANG_VI } from '@/consts/common'
+import { Metadata } from 'next'
+import { GMProps } from '@/types'
+import { getTranslations } from 'next-intl/server'
+
+export async function generateMetadata({ params }: GMProps): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'Metadata.aboutMe' })
+
+  return {
+    title: t('title'),
+  }
+}
 
 type TContact = {
   name: string

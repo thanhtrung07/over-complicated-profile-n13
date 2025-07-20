@@ -1,6 +1,18 @@
 import Board from '@/components/Board'
 import { ReactNode, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
+import { Metadata } from 'next'
+import { GMProps } from '@/types'
+import { getTranslations } from 'next-intl/server'
+
+export async function generateMetadata({ params }: GMProps): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'Metadata.career' })
+
+  return {
+    title: t('title'),
+  }
+}
 
 const WorkListItem = ({ children }: { children: ReactNode }) => (
   <li className="flex items-center gap-2">

@@ -14,6 +14,18 @@ import {
 } from '@/assets/svgs'
 import { JSX, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
+import { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
+import { GMProps } from '@/types'
+
+export async function generateMetadata({ params }: GMProps): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'Metadata.skills' })
+
+  return {
+    title: t('title'),
+  }
+}
 
 type TTechUsed = {
   techName: string

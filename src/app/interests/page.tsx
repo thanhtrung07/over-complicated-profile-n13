@@ -6,6 +6,18 @@ import svImg from '@/assets/images/stardew.jpg'
 import Image from 'next/image'
 import { JPEG_BLUR_DATA_URL } from '@/consts/common'
 import { useTranslations } from 'next-intl'
+import { Metadata } from 'next'
+import { GMProps } from '@/types'
+import { getTranslations } from 'next-intl/server'
+
+export async function generateMetadata({ params }: GMProps): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'Metadata.interests' })
+
+  return {
+    title: t('title'),
+  }
+}
 
 const games = [
   { name: 'Oni', img: oniImg },

@@ -97,5 +97,29 @@
     "interests": "Sở thích",
     "theEnd": "Lời kết",
     "switchLang": "Swicth to English"
-  }
+  },
+  "NotFound": {
+    "title": "Whoops!!!",
+    "description": "Đường dẫn bạn đang tìm kiếm không tồn tại hoặc đã bị xóa.",
+    "backHome": "Chọn trang trên thanh điều hướng hoặc quay về ",
+    "home": "Trang chủ"
+  },
+  "Metadata": {
+    "description": "Portfolio về Trung07, một chàng trai thích lập trình",
+    "aboutMe": {
+      "title": "Giới thiệu | Trung07"
+    },
+    "career": {
+      "title": "Trình độ | Trung07"
+    },
+    "skills": {
+      "title": "Kỹ năng | Trung07"
+    },
+    "interests": {
+      "title": "Sở thích | Trung07"
+    },
+    "theEnd": {
+      "title": "Lời kết | Trung07"
+    }
+  } 
 }

@@ -1,37 +1,58 @@
 import myImage from '@/assets/images/CV1_Transparent.png'
-import { Facebook, Github, LinkedIn } from '@/assets/svgs'
+import { Github, LinkedIn, Twitter } from '@/assets/svgs'
 import Board from '@/components/Board'
 import { Button } from '@headlessui/react'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { JSX } from 'react'
+import { useLocale, useTranslations } from 'next-intl'
+import { LANG_VI } from '@/consts/common'
+import { Metadata } from 'next'
+import { GMProps } from '@/types'
+import { getTranslations } from 'next-intl/server'
+
+export async function generateMetadata({ params }: GMProps): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'Metadata.aboutMe' })
+
+  return {
+    title: t('title'),
+  }
+}
 
 type TContact = {
   name: string
-  url: string
+  url?: string
   backgroundClass: string
   icon: JSX.Element
+}
+
+const cvLinkEng = '/NguyenThanhTrung_Resume_Frontend_eng.pdf'
+const cvLinkVi = '/NguyenThanhTrung_Resume_Frontend_vi.pdf'
+
+const getCvLink = (locale: string) => {
+  return locale === LANG_VI ? cvLinkVi : cvLinkEng
 }
 
 const contacts: TContact[] = [
   {
     name: 'Github',
-    url: 'https://www.google.com.vn/',
+    url: process.env.NEXT_PUBLIC_GITHUB_URL,
     backgroundClass: 'bg-foreground',
     icon: <Github className="h-7 w-7" />,
   },
   {
     name: 'LinkedIn',
-    url: 'https://www.google.com.vn/',
+    url: process.env.NEXT_PUBLIC_LINKEDIN_URL,
     backgroundClass: 'bg-[#0076b2]',
     icon: <LinkedIn className="h-5 w-5" />,
   },
   {
-    name: 'Facebook',
-    url: 'https://www.google.com.vn/',
-    backgroundClass: 'bg-[#3d5a98]',
-    icon: <Facebook className="h-5 w-5" />,
+    name: 'Twitter',
+    url: process.env.NEXT_PUBLIC_X_URL,
+    backgroundClass: 'bg-[#2f2f2f] border-foreground border',
+    icon: <Twitter className="h-4 w-4 fill-white" />,
   },
 ]
 
@@ -70,14 +91,19 @@ const SkillLink = ({
 )
 
 export default function AboutMe() {
+  const t = useTranslations('AboutMe')
+  const locale = useLocale()
+
   return (
-    <Board title="Greetings!">
+    <Board title={t('title')}>
       {/* Profile Section */}
       <section className="flex w-full flex-col items-center justify-around gap-4 sm:flex-row sm:py-1">
         <div className="order-2 flex flex-col items-center sm:order-1">
           <h1 className="text-3xl font-bold">
-            <span className="text-accent-dark dark:text-accent-light">Hi</span>,
-            I am Nguyen
+            <span className="text-accent-dark dark:text-accent-light">
+              {t('introduction.hi')}
+            </span>
+            {t('introduction.iam')}
           </h1>
           <h1
             className={clsx(
@@ -85,7 +111,7 @@ export default function AboutMe() {
               'text-right align-bottom text-3xl font-bold sm:translate-x-15'
             )}
           >
-            Thanh Trung
+            {t('introduction.name')}
           </h1>
         </div>
         <Image
@@ -103,34 +129,22 @@ export default function AboutMe() {
       {/* Description */}
       <section className="flex flex-col items-start gap-4">
         <div>
+          <p className="text-justify">{t('opening')}</p>
           <p className="text-justify">
-            Tôi là lập trình viên với 4 năm kinh nghiệm về Javascript. Thích
-            code và luôn hướng đến những hệ thống đơn giản nhưng tối ưu và
-            chuyên nghiệp. Tôi là một người nghiêm túc với công việc, hòa đồng
-            và có tinh thần đồng đội cao.
-          </p>
-          <p className="text-justify">
-            Châm ngôn:{' '}
-            <span className="italic">
-              {"When I take on a job, I make sure it\'s done."}
-            </span>
+            {t('quite.label') + ' '}
+            <span className="italic">{t('quite.text')}</span>
           </p>
         </div>
         <SkillLink category="Front-end">
           <>
-            {' Có kinh nghiệm làm việc với '}
-            <span className="font-bold">
-              ReactJS (NextJS, Hook, Redux Toolkit), Bootstrap, Antd
-              ,TailwindCSS, Axios và các công nghệ khác.
-            </span>
+            {t('stacksFe.text')}
+            <span className="font-bold">{t('stacksFe.techs')}</span>
           </>
         </SkillLink>
         <SkillLink category="Back-end">
           <>
-            {' Có hiểu biết về '}
-            <span className="font-bold">
-              NodeJS (ExpressJS), MongoDB, MySQL, Redis và các công nghệ khác.
-            </span>
+            {t('stacksBe.text')}
+            <span className="font-bold">{t('stacksBe.techs')}</span>
           </>
         </SkillLink>
       </section>
@@ -143,14 +157,16 @@ export default function AboutMe() {
           ))}
         </div>
         <div className="xs:justify-end xs:order-2 order-1 flex w-full flex-1 items-center justify-center">
-          <Button
-            className={clsx(
-              'bg-primary dark:bg-primary-light text-primary-content',
-              'min-w-2/3 rounded-md px-4 py-2'
-            )}
-          >
-            Download Resume
-          </Button>
+          <a href={getCvLink(locale)} download>
+            <Button
+              className={clsx(
+                'bg-primary text-primary-content hover:bg-primary-dark cursor-pointer',
+                'min-w-2/3 rounded-md px-4 py-2'
+              )}
+            >
+              {t('downloadCV')}
+            </Button>
+          </a>
         </div>
       </footer>
     </Board>

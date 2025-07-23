@@ -12,16 +12,20 @@ import {
   ReactIcon,
   Tailwindcss,
 } from '@/assets/svgs'
-import { JSX } from 'react'
+import { JSX, useMemo } from 'react'
+import { useTranslations } from 'next-intl'
+import { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
+import { GMProps } from '@/types'
 
-const workflows = [
-  'Testing & Debugging',
-  'Git, Github, BitBucket for Teamwork',
-  'Git Flow & Trunk-based strategies',
-  'Responsive Web & App Development',
-  'Agile/Scrum methodology',
-  'Can use English for Work!',
-]
+export async function generateMetadata({ params }: GMProps): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'Metadata.skills' })
+
+  return {
+    title: t('title'),
+  }
+}
 
 type TTechUsed = {
   techName: string
@@ -75,7 +79,7 @@ const techUsed: TTechUsed[] = [
   },
   {
     techName: 'ExpressJS',
-    icon: <Express className="h-12 w-12" />,
+    icon: <Express className="h-12 w-12 dark:fill-white" />,
   },
 ]
 
@@ -88,10 +92,24 @@ const TechIcons = ({ techName, icon }: TTechUsed) => (
   </div>
 )
 export default function Skills() {
+  const t = useTranslations('Skills')
+
+  const practices = useMemo(
+    () => [
+      t('practices.debug'),
+      t('practices.git'),
+      t('practices.workflow'),
+      t('practices.responsive'),
+      t('practices.methodology'),
+      t('practices.english'),
+    ],
+    [t]
+  )
+
   return (
-    <Board title="Skills">
+    <Board title={t('title')}>
       <section>
-        <p className="text-lg font-bold">Programming Languages:</p>
+        <p className="text-lg font-bold">{t('programLng')}</p>
         <div className="xs:grid-cols-5 mt-3 grid w-full grid-cols-3 gap-y-4">
           {techUsed.map((techs) => (
             <TechIcons key={techs.techName} {...techs} />
@@ -100,9 +118,9 @@ export default function Skills() {
       </section>
 
       <section>
-        <p className="text-lg font-bold">Workflows:</p>
+        <p className="text-lg font-bold">{t('practices.label')}</p>
         <ul className="mt-1 pl-4">
-          {workflows.map((description, index) => (
+          {practices.map((description, index) => (
             <li key={index} className="custom-tick-marker">
               {description}
             </li>

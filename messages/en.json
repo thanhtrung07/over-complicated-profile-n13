@@ -1,0 +1,125 @@
+{
+  "AboutMe": {
+    "title": "Greetings!",
+    "introduction": {
+      "hi": "Hi",
+      "iam": ", I am Nguyen",
+      "name": "Thanh Trung"
+    },
+    "opening": "I'm a developer with 4 years of experience in JavaScript. I enjoy coding and always strive to build systems that are simple, optimized, and professional. I'm dedicated to my work, friendly, and a strong team player.",
+    "quite":{
+      "label": "Motto:",
+      "text": "When I take on a job, I make sure it's done."
+    },
+    "stacksFe":{
+      "text": " Experienced in working with ",
+      "techs": "ReactJS (NextJS, Hook, Redux Toolkit), Bootstrap, Antd, TailwindCSS, Axios and other technologies."
+    },
+    "stacksBe":{
+      "text": " Understanding of ",
+      "techs": "NodeJS (ExpressJS), MongoDB, MySQL, Redis and other technologies."
+    },
+    "downloadCV": "Download CV (English)"
+  },
+  "Career": {
+    "title": "Career",
+    "jobInsurance": {
+      "title": "Agency insurance mobile app",
+      "position": "Mobile Developer at FSoft",
+      "size": "Team size: 25",
+      "description": "Developed a mobile application using <strong>React Native</strong> to help insurance agents manage clients, track individual and team performance targets, provide sales consultations, participate in marketing campaigns, and stay updated with internal news.",
+      "bullet1": "Built UI with <strong>React Native</strong>, wrote tests using <strong>Jest-Cucumber</strong>",
+      "bullet2": "Proposed and implemented <strong>technical solutions, estimate, review & merge PR</strong>",
+      "bullet3": "<strong>Supported onboarding</strong> and <strong> collaborated closely with backend, tester, BA</strong>",
+      "bullet4": "<strong>Communicated directly with client</strong> to clarify requirements and resolved issues",
+      "bullet5": "Fixed bugs, optimized code"
+    },
+    "jobCreditCard": {
+      "title": "Credit App",
+      "position": "Frontend Developer at FSoft",
+      "size": "Team size: 22",
+      "description": "Developed a recommendation system for loans and promotions tailored to end users, based on facial recognition and ID card data. The system includes four platforms: a web admin portal for clients, a web admin portal for partner banks, a SPA web app, and a mobile app for end users.",
+      "bullet1": "Built UI with <strong>ReactJS & React Native</strong>, wrote tests using <strong>Jest</strong>",
+      "bullet2": "<strong>Proposed and implemented technical solutions</strong>",
+      "bullet3": "<strong>Collaborated closely with backend, testers, and BAs </strong> for delivery",
+      "bullet4": "Fixed bugs, optimized code"
+    },
+    "jobMigrate": {
+      "title": "Startup Hundr Tech",
+      "position": "Front End Developer",
+      "size": "Team size: 3-5",
+      "description": "Redesigned the web UI by migrating from a legacy stack <strong>(HTML/CSS/jQuery)</strong> to <strong>ReactJS</strong>, aiming to enhance performance, reusability, maintainability, and scalability.",
+      "bullet1": "Built UI with <strong>ReactJS & Bootstrap</strong> following tasks",
+      "bullet2": "<strong>Proposed and implemented technical solutions</strong> that fit requirements",
+      "bullet3": "<strong>Worked with backend</strong> if the Project need migrate both side",
+      "bullet4": "Fixed bugs, optimized code"
+    }
+  },
+  "Skills": {
+    "title": "Skills",
+    "programLng": "Programing Languages:",
+    "practices": {
+      "label": "Development Practices:",
+      "debug": "Testing & Debugging",
+      "git": "Git, Github, BitBucket for Teamwork",
+      "workflow": "Git Flow & Trunk-based strategies",
+      "responsive": "Responsive Web & App Development",
+      "methodology": "Agile/Scrum methodology",
+      "english": "Can use English for Work!"
+    }
+  },
+  "Interests": {
+    "title": "Interests",
+    "pingpong": "I enjoy playing table tennis because it's fun and great for improving reflexes and focus",
+    "running": {
+      "text": "I also go running regularly—it helps build willpower ",
+      "hidden": "and, well… sitting too much isn't great for my butt"
+    },
+    "indie": "I'm a big fan of indie games. Even though they often lack flashy GPU-eater graphics, they shine with creative artistry and truly unique gameplay experiences."
+  },
+  "TheEnd": {
+    "title": "The End",
+    "farewell": {
+      "opening": "Finally, ",
+      "thanks": "thank you",
+      "closing": "for taking the time to read through this portfolio 🤗🤗🤗."
+    },
+    "hopeful": "Hope that we could work together in the future!",
+    "meme": {
+      "top": "Me when design Portfolio",
+      "bottom": "People who read my Portfolio"
+    }
+  },
+  "Navbar": {
+    "aboutMe": "Aboute Me",
+    "career": "Career",
+    "skills": "Skills",
+    "interests": "Interests",
+    "theEnd": "The End",
+    "switchLang": "Chuyển sang Tiếng Việt"
+  },
+  "NotFound": {
+    "title": "Whoops!!!",
+    "description": "The URL you are looking for does not exist or has been removed.",
+    "backHome": "Choose a page from the navigation bar or go back ",
+    "home": "Home"
+  },
+   "Metadata": {
+    "description": "Portfolio of Trung07, a random guy that enjoy coding",
+    "aboutMe": {
+      "title": "About Me | Trung07"
+    },
+    "career": {
+      "title": "Career | Trung07"
+    },
+    "skills": {
+      "title": "Skills | Trung07"
+    },
+    "interests": {
+      "title": "Interests | Trung07"
+    },
+    "theEnd": {
+      "title": "The End | Trung07"
+    }
+  } 
+}

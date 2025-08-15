@@ -108,7 +108,7 @@ export default function NavBar({ locale }: { locale: Language }) {
       className={clsx(
         'fixed z-10 w-full px-5',
         'bg-foreground text-copy dark:bg-dark-foreground dark:text-dark-copy',
-        'md:static md:flex md:min-h-screen md:max-w-60 md:flex-2 md:px-8 md:pt-7 md:pb-4',
+        'md:flex md:min-h-screen md:max-w-60 md:flex-2 md:px-8 md:pt-7 md:pb-4',
         'md:border-border md:dark:border-dark-border md:flex-1 md:flex-col md:justify-between md:border-r'
       )}
     >

@@ -57,7 +57,7 @@ export default async function RootLayout({
         <NextIntlClientProvider>
           <div className="flex min-h-screen flex-col md:flex-row">
             <NavBar locale={locale as Language} />
-            <main className="mt-13.5 flex-7 md:mt-0">
+            <main className="flex-7 pt-13.5 md:pt-0 md:pl-60">
               <div className="flex min-h-screen items-center justify-start p-10">
                 {children}
               </div>

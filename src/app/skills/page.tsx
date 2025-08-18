@@ -110,7 +110,7 @@ export default function Skills() {
     <Board title={t('title')}>
       <section>
         <p className="text-lg font-bold">{t('programLng')}</p>
-        <div className="xs:grid-cols-5 mt-3 grid w-full grid-cols-3 gap-y-4">
+        <div className="animate-slide-in xs:grid-cols-5 mt-3 grid w-full grid-cols-3 gap-y-4">
           {techUsed.map((techs) => (
             <TechIcons key={techs.techName} {...techs} />
           ))}
@@ -119,7 +119,7 @@ export default function Skills() {
 
       <section>
         <p className="text-lg font-bold">{t('practices.label')}</p>
-        <ul className="mt-1 pl-4">
+        <ul className="animate-slide-in mt-1 pl-4">
           {practices.map((description, index) => (
             <li key={index} className="custom-tick-marker">
               {description}

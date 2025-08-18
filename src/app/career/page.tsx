@@ -73,8 +73,8 @@ const JobDescription = ({
         {size}
       </p>
     </header>
-    <p>{description}</p>
-    <ul className="space-y-1">
+    <p className="animate-slide-in opacity-0">{description}</p>
+    <ul className="animate-slide-in-after space-y-1 opacity-0">
       {bullets.map((item, index) => (
         <WorkListItem key={index}>{item}</WorkListItem>
       ))}

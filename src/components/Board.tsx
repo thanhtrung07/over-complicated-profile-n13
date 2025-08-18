@@ -13,6 +13,7 @@ export default function Board({ children, className, title }: IProps) {
       className={twMerge(
         'bg-foreground dark:bg-dark-foreground h-full w-full max-w-3xl rounded-xl px-4 py-5',
         'flex h-full w-full flex-col items-center gap-4',
+        'animate-fade-in',
         className
       )}
     >

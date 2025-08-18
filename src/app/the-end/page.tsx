@@ -27,7 +27,7 @@ export default function TheEnd() {
   return (
     <Board title={t('title')}>
       <section className="space-y-8">
-        <div className="space-y-1 text-lg">
+        <div className="animate-fade-in space-y-1 text-lg">
           <p>
             {t('farewell.opening')}
             <span className="text-accent-dark dark:text-accent-light font-bold">

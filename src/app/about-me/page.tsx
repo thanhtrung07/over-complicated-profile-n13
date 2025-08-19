@@ -28,7 +28,7 @@ type TContact = {
   icon: JSX.Element
 }
 
-const cvLinkEng = '/NguyenThanhTrung_Resume_Frontend_eng.pdf'
+const cvLinkEng = '/NguyenThanhTrung_Resume_Frontend_en.pdf'
 const cvLinkVi = '/NguyenThanhTrung_Resume_Frontend_vi.pdf'
 
 const getCvLink = (locale: string) => {

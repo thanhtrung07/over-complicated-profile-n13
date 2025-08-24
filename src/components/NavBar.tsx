@@ -1,22 +1,16 @@
 'use client'
-import {
-  DARK_THEME,
-  KEY_THEME,
-  LANG_EN,
-  LANG_VI,
-  LIGHT_THEME,
-} from '@/consts/common'
+import { DARK_THEME, KEY_THEME, LIGHT_THEME } from '@/consts/common'
 import { ROUTES } from '@/consts/routes'
+import { Language } from '@/i18n/config'
 import clsx from 'clsx'
 import { Bike, Briefcase, Contact, Handshake, Menu, Puzzle } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { JSX, useEffect, useMemo, useState } from 'react'
 import AsymCurveDivider from './AsymCurveDivider'
 import SwitchBtn from './SwitchBtn'
-import { useTranslations } from 'next-intl'
-import { setUserLocale } from '@/services/locales'
-import { Language } from '@/i18n/config'
+import SwitchLang from './SwitchLang'
 
 const linkLists = [
   ROUTES.about,
@@ -59,9 +53,6 @@ const iconMap: Record<string, JSX.Element> = {
 
 export default function NavBar({ locale }: { locale: Language }) {
   const [open, setOpen] = useState<boolean>(false)
-  const [lang, setLang] = useState<Language>(
-    locale === LANG_EN ? LANG_VI : LANG_EN
-  )
   const [isDark, setIsDark] = useState<boolean>()
   const pathname = usePathname()
   const t = useTranslations('Navbar')
@@ -78,24 +69,13 @@ export default function NavBar({ locale }: { locale: Language }) {
   }, [isDark])
 
   const ThemeAndLangControls = useMemo(() => {
-    const toggleLang = () => {
-      setUserLocale(lang)
-      setLang((prev: Language) => (prev === LANG_EN ? LANG_VI : LANG_EN))
-    }
-
     return (
       <>
         <SwitchBtn enabled={!!isDark} setEnabled={setIsDark} />
-        <button
-          title={t('switchLang')}
-          onClick={toggleLang}
-          className="share-border-btns w-8 cursor-pointer rounded-md border px-1 py-0.5"
-        >
-          {`${lang}`}
-        </button>
+        <SwitchLang locale={locale} />
       </>
     )
-  }, [t, lang, isDark])
+  }, [isDark, locale])
 
   const Nickname = () => (
     <h1 className={clsx('font-brand text-2xl')}>

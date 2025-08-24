@@ -126,6 +126,7 @@ export default function AboutMe() {
             'border-accent bg-primary-light order-1 h-32 w-32 rounded-full border-2 text-center',
             'sm:order-2 sm:ml-12 lg:h-48 lg:w-48'
           )}
+          priority
           src={myImage}
           alt="Profile"
         />

@@ -133,10 +133,10 @@ export default function AboutMe() {
       </section>
 
       {/* Description */}
-      <section className="animate-fade-in flex flex-col items-start gap-4">
+      <section className="animate-fade-in flex flex-col items-start gap-4 text-justify">
         <div>
-          <p className="text-justify">{t('opening')}</p>
-          <p className="text-justify">
+          <p>{t('opening')}</p>
+          <p>
             {t('quite.label') + ' '}
             <span className="italic">{t('quite.text')}</span>
           </p>

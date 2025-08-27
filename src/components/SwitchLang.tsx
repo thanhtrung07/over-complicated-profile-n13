@@ -4,7 +4,7 @@ import { setUserLocale } from '@/services/locales'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import clsx from 'clsx'
 import { Languages } from 'lucide-react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { memo } from 'react'
 
 const langs = [
@@ -26,7 +26,7 @@ const LangOption = memo(({ lang, isActive, onClick }: ILangOptions) => {
         className={clsx(
           'group flex w-full cursor-pointer rounded-sm px-3 text-start',
           'data-focus:bg-dark-foreground/20 data-focus:text-copy',
-          'dark:data-focus:bg-foreground/20 data-focus:text-dark-copy'
+          'dark:data-focus:bg-foreground/20 dark:data-focus:text-dark-copy'
         )}
       >
         {lang.des}
@@ -37,8 +37,9 @@ const LangOption = memo(({ lang, isActive, onClick }: ILangOptions) => {
 })
 LangOption.displayName = 'LangOption'
 
-const SwitchLang = ({ locale }: { locale: Language }) => {
+const SwitchLang = () => {
   const t = useTranslations('Navbar')
+  const locale = useLocale() as Language
 
   const _changeLang = (langCode: Language) => {
     if (langCode === locale) return

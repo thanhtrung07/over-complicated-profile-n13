@@ -1,5 +1,6 @@
 import { twMerge } from 'tailwind-merge'
 import RouteTitle from './RouteTitle'
+import { memo } from 'react'
 
 interface IProps {
   children: React.ReactNode
@@ -7,7 +8,7 @@ interface IProps {
   title: string
 }
 
-export default function Board({ children, className, title }: IProps) {
+const Board = ({ children, className = '', title }: IProps) => {
   return (
     <section
       className={twMerge(
@@ -25,3 +26,5 @@ export default function Board({ children, className, title }: IProps) {
     </section>
   )
 }
+
+export default memo(Board)

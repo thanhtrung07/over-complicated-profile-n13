@@ -1,11 +1,12 @@
 import clsx from 'clsx'
+import { memo } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface IProps {
   className?: string
 }
 
-export default function AsymCurveDivider({ className = '' }: IProps) {
+const AsymCurveDivider = ({ className = '' }: IProps) => {
   return (
     <div className={twMerge('hidden h-[16px] md:flex', className)}>
       <div className="relative flex-1">
@@ -27,3 +28,5 @@ export default function AsymCurveDivider({ className = '' }: IProps) {
     </div>
   )
 }
+
+export default memo(AsymCurveDivider)

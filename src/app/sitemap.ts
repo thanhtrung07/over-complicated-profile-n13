@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'https://trung07-oc-profile.vercel.app'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

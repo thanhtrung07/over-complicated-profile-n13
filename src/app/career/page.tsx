@@ -63,7 +63,7 @@ const JobDescription = ({
   description,
   bullets,
 }: IJobItem) => (
-  <article className="mb-2 space-y-3">
+  <section className="mb-2 space-y-3 text-justify">
     <header className="space-y-3">
       <h1 className="text-primary dark:text-primary-light text-2xl font-bold">
         {title}
@@ -79,7 +79,7 @@ const JobDescription = ({
         <WorkListItem key={index}>{item}</WorkListItem>
       ))}
     </ul>
-  </article>
+  </section>
 )
 
 export default function Career() {

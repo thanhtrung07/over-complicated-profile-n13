@@ -31,7 +31,7 @@ export default function Interests() {
 
   return (
     <Board title={t('title')}>
-      <section className="animate-fade-in space-y-4 text-lg lg:space-y-8">
+      <section className="animate-fade-in space-y-4 text-justify text-lg lg:space-y-8">
         <p>{t('pingpong')}</p>
         <p>
           {t('running.text')}

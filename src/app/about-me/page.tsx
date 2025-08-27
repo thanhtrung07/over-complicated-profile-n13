@@ -28,7 +28,7 @@ type TContact = {
   icon: JSX.Element
 }
 
-const cvLinkEng = '/NguyenThanhTrung_Resume_Frontend_eng.pdf'
+const cvLinkEng = '/NguyenThanhTrung_Resume_Frontend_en.pdf'
 const cvLinkVi = '/NguyenThanhTrung_Resume_Frontend_vi.pdf'
 
 const getCvLink = (locale: string) => {
@@ -97,7 +97,12 @@ export default function AboutMe() {
   return (
     <Board title={t('title')}>
       {/* Profile Section */}
-      <section className="flex w-full flex-col items-center justify-around gap-4 sm:flex-row sm:py-1">
+      <section
+        className={clsx(
+          'flex w-full flex-col items-center justify-around gap-4 sm:flex-row sm:py-1',
+          'animate-slide-in opacity-0'
+        )}
+      >
         <div className="order-2 flex flex-col items-center sm:order-1">
           <h1 className="text-3xl font-bold">
             <span className="text-accent-dark dark:text-accent-light">
@@ -121,16 +126,17 @@ export default function AboutMe() {
             'border-accent bg-primary-light order-1 h-32 w-32 rounded-full border-2 text-center',
             'sm:order-2 sm:ml-12 lg:h-48 lg:w-48'
           )}
+          priority
           src={myImage}
           alt="Profile"
         />
       </section>
 
       {/* Description */}
-      <section className="flex flex-col items-start gap-4">
+      <section className="animate-fade-in flex flex-col items-start gap-4 text-justify">
         <div>
-          <p className="text-justify">{t('opening')}</p>
-          <p className="text-justify">
+          <p>{t('opening')}</p>
+          <p>
             {t('quite.label') + ' '}
             <span className="italic">{t('quite.text')}</span>
           </p>

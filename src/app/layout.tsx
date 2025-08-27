@@ -5,7 +5,6 @@ import type { Metadata } from 'next'
 import { Gluten, Space_Grotesk, Notable } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getTranslations } from 'next-intl/server'
-import { Language } from '@/i18n/config'
 import { GMProps } from '@/types'
 
 const spaceGrotesk = Space_Grotesk({
@@ -50,15 +49,19 @@ export default async function RootLayout({
       <body
         className={clsx(
           `font-main antialiased`,
-          'bg-background text-copy',
-          'dark:bg-dark-background dark:text-dark-copy'
+          'bg-background text-copy dark:bg-dark-background dark:text-dark-copy'
         )}
       >
         <NextIntlClientProvider>
-          <div className="flex min-h-screen flex-col md:flex-row">
-            <NavBar locale={locale as Language} />
-            <main className="mt-13.5 flex-7 md:mt-0">
-              <div className="flex min-h-screen items-center justify-start p-10">
+          <div className="flex min-h-screen">
+            <NavBar />
+            <main className="flex-1 pt-13.5 md:pt-0 md:pl-60">
+              <div
+                className={clsx(
+                  'flex flex-col items-center justify-center p-8',
+                  'md:min-h-screen md:flex-row md:justify-start md:p-10'
+                )}
+              >
                 {children}
               </div>
             </main>

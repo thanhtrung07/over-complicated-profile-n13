@@ -63,7 +63,7 @@ const JobDescription = ({
   description,
   bullets,
 }: IJobItem) => (
-  <article className="mb-2 space-y-3">
+  <section className="mb-2 space-y-3 text-justify">
     <header className="space-y-3">
       <h1 className="text-primary dark:text-primary-light text-2xl font-bold">
         {title}
@@ -73,13 +73,13 @@ const JobDescription = ({
         {size}
       </p>
     </header>
-    <p>{description}</p>
-    <ul className="space-y-1">
+    <p className="animate-slide-in opacity-0">{description}</p>
+    <ul className="animate-slide-in-after space-y-1 opacity-0">
       {bullets.map((item, index) => (
         <WorkListItem key={index}>{item}</WorkListItem>
       ))}
     </ul>
-  </article>
+  </section>
 )
 
 export default function Career() {

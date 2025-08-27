@@ -35,7 +35,7 @@
       "bullet5": "Fixed bugs, optimized code"
     },
     "jobCreditCard": {
-      "title": "Credit App",
+      "title": "Credit System",
       "position": "Frontend Developer at FSoft",
       "size": "Team size: 22",
       "description": "Developed a recommendation system for loans and promotions tailored to end users, based on facial recognition and ID card data. The system includes four platforms: a web admin portal for clients, a web admin portal for partner banks, a SPA web app, and a mobile app for end users.",
@@ -45,8 +45,8 @@
       "bullet4": "Fixed bugs, optimized code"
     },
     "jobMigrate": {
-      "title": "Startup Hundr Tech",
-      "position": "Front End Developer",
+      "title": "Migrate web",
+      "position": "Frontend Developer at Startup Hundr Tech",
       "size": "Team size: 3-5",
       "description": "Redesigned the web UI by migrating from a legacy stack <strong>(HTML/CSS/jQuery)</strong> to <strong>ReactJS</strong>, aiming to enhance performance, reusability, maintainability, and scalability.",
       "bullet1": "Built UI with <strong>ReactJS & Bootstrap</strong> following tasks",
@@ -70,12 +70,12 @@
   },
   "Interests": {
     "title": "Interests",
-    "pingpong": "I enjoy playing table tennis because it's fun and great for improving reflexes and focus",
+    "pingpong": "Ping-pong is my favorite sport, it helps relieve stress, improve concentration, and sharpen reflexes",
     "running": {
-      "text": "I also go running regularly—it helps build willpower ",
-      "hidden": "and, well… sitting too much isn't great for my butt"
+      "text": "In addition, I keep a habit of jogging to avoid feeling sluggish",
+      "hidden": ", well… my butt and back will scream in agony if I sit too much"
     },
-    "indie": "I'm a big fan of indie games. Even though they often lack flashy GPU-eater graphics, they shine with creative artistry and truly unique gameplay experiences."
+    "indie": "Indie games. Although they usually don't feature dazzling, hyper-realistic graphics, indie games stand out with artistic creativity and unique approaches, showcasing the distinct style and perspective of a dev"
   },
   "TheEnd": {
     "title": "The End",
@@ -96,7 +96,7 @@
     "skills": "Skills",
     "interests": "Interests",
     "theEnd": "The End",
-    "switchLang": "Chuyển sang Tiếng Việt"
+    "switchLang": "Change Language"
   },
   "NotFound": {
     "title": "Whoops!!!",

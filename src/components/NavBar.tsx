@@ -1,22 +1,15 @@
 'use client'
-import {
-  DARK_THEME,
-  KEY_THEME,
-  LANG_EN,
-  LANG_VI,
-  LIGHT_THEME,
-} from '@/consts/common'
+import { DARK_THEME, KEY_THEME, LIGHT_THEME } from '@/consts/common'
 import { ROUTES } from '@/consts/routes'
 import clsx from 'clsx'
 import { Bike, Briefcase, Contact, Handshake, Menu, Puzzle } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { JSX, useEffect, useMemo, useState } from 'react'
+import { JSX, useEffect, useState } from 'react'
 import AsymCurveDivider from './AsymCurveDivider'
-import SwitchBtn from './SwitchBtn'
-import { useTranslations } from 'next-intl'
-import { setUserLocale } from '@/services/locales'
-import { Language } from '@/i18n/config'
+import SwitchLang from './SwitchLang'
+import SwitchTheme from './SwitchTheme'
 
 const linkLists = [
   ROUTES.about,
@@ -26,7 +19,7 @@ const linkLists = [
   ROUTES.theEnd,
 ]
 
-const getLinkLabel = (t: ReturnType<typeof useTranslations>, name: string) => {
+const _getLinkLabel = (t: ReturnType<typeof useTranslations>, name: string) => {
   switch (name) {
     case ROUTES.about.name:
       return t('aboutMe')
@@ -43,10 +36,10 @@ const getLinkLabel = (t: ReturnType<typeof useTranslations>, name: string) => {
   }
 }
 
-const applyTheme = (dark: boolean) => {
+const _applyDarkTheme = (isDark: boolean) => {
   const root = document.documentElement
-  root.classList.toggle('dark', dark)
-  localStorage.theme = dark ? DARK_THEME : LIGHT_THEME
+  root.classList.toggle('dark', isDark)
+  localStorage.theme = isDark ? DARK_THEME : LIGHT_THEME
 }
 
 const iconMap: Record<string, JSX.Element> = {
@@ -57,66 +50,46 @@ const iconMap: Record<string, JSX.Element> = {
   [ROUTES.theEnd.name]: <Handshake className="h-6 w-6" />,
 }
 
-export default function NavBar({ locale }: { locale: Language }) {
+const Nickname = () => (
+  <h1 className={clsx('font-brand text-2xl')}>
+    Trung<span className="text-primary dark:text-primary-light">07</span>
+  </h1>
+)
+
+const NavBar = () => {
   const [open, setOpen] = useState<boolean>(false)
-  const [lang, setLang] = useState<Language>(
-    locale === LANG_EN ? LANG_VI : LANG_EN
-  )
-  const [isDark, setIsDark] = useState<boolean>()
+  const [isDark, setIsDark] = useState<boolean | undefined>(undefined)
   const pathname = usePathname()
   const t = useTranslations('Navbar')
 
   useEffect(() => {
     const shouldUseDark =
-      isDark ??
-      (localStorage.theme === DARK_THEME ||
-        (!(KEY_THEME in localStorage) &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches))
+      localStorage.theme === DARK_THEME ||
+      (!(KEY_THEME in localStorage) &&
+        window?.matchMedia('(prefers-color-scheme: dark)').matches)
+    _onChangeTheme(shouldUseDark)
+  }, [])
 
-    setIsDark(shouldUseDark)
-    applyTheme(shouldUseDark)
-  }, [isDark])
-
-  const ThemeAndLangControls = useMemo(() => {
-    const toggleLang = () => {
-      setUserLocale(lang)
-      setLang((prev: Language) => (prev === LANG_EN ? LANG_VI : LANG_EN))
-    }
-
-    return (
-      <>
-        <SwitchBtn enabled={!!isDark} setEnabled={setIsDark} />
-        <button
-          title={t('switchLang')}
-          onClick={toggleLang}
-          className="share-border-btns w-8 cursor-pointer rounded-md border px-1 py-0.5"
-        >
-          {`${lang}`}
-        </button>
-      </>
-    )
-  }, [t, lang, isDark])
-
-  const Nickname = () => (
-    <h1 className={clsx('font-brand text-2xl')}>
-      Trung<span className="text-primary dark:text-primary-light">07</span>
-    </h1>
-  )
+  const _onChangeTheme = (enabled: boolean) => {
+    _applyDarkTheme(enabled)
+    setIsDark(enabled)
+  }
 
   return (
     <nav
       className={clsx(
         'fixed z-10 w-full px-5',
-        'bg-foreground text-copy dark:bg-dark-foreground dark:text-dark-copy',
-        'md:static md:flex md:min-h-screen md:max-w-60 md:flex-2 md:px-8 md:pt-7 md:pb-4',
-        'md:border-border md:dark:border-dark-border md:flex-1 md:flex-col md:justify-between md:border-r'
+        'bg-foreground dark:bg-dark-foreground shadow-copy-light shadow-md/20 dark:shadow-none',
+        'md:flex md:min-h-screen md:max-w-60 md:flex-col md:justify-between md:px-8 md:pt-7 md:pb-4',
+        'md:border-border md:dark:border-dark-border md:border-r'
       )}
     >
       {/* Mobile Header */}
       <div className="flex items-center justify-between py-3 md:hidden">
         <Nickname />
         <div className="flex items-center space-x-3">
-          {ThemeAndLangControls}
+          <SwitchTheme isDark={!!isDark} onChange={_onChangeTheme} />
+          <SwitchLang />
           <button
             onClick={() => setOpen(!open)}
             className="border-border dark:border-dark-border rounded-md border px-1 py-0.5"
@@ -161,11 +134,12 @@ export default function NavBar({ locale }: { locale: Language }) {
                 )}
               >
                 {iconMap[link.name]}
-                <span>{getLinkLabel(t, link.name)}</span>
+                <span>{_getLinkLabel(t, link.name)}</span>
               </Link>
             </li>
           ))}
         </ul>
+        {/* Border for dropdown navbar on mobile viewport */}
         {open && (
           <div className="border-border dark:border-dark-border -mx-8 border-b md:hidden" />
         )}
@@ -175,9 +149,12 @@ export default function NavBar({ locale }: { locale: Language }) {
       <div className="hidden md:block">
         <AsymCurveDivider className="-mx-8 mb-2" />
         <div className="hover-btns flex items-center space-x-4">
-          {ThemeAndLangControls}
+          <SwitchTheme isDark={!!isDark} onChange={_onChangeTheme} />
+          <SwitchLang />
         </div>
       </div>
     </nav>
   )
 }
+
+export default NavBar

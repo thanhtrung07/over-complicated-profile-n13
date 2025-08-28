@@ -6,6 +6,7 @@ import { Gluten, Space_Grotesk, Notable } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { GMProps } from '@/types'
+import { Analytics } from '@vercel/analytics/next'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -67,6 +68,7 @@ export default async function RootLayout({
             </main>
           </div>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   )

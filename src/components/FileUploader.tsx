@@ -169,7 +169,7 @@ export default function FileUploader({ onClose }: IFileUploaderProps) {
 
       {/* Instructions */}
       <div className="text-copy-lighter mt-4 text-xs">
-        <p>• Files will be uploaded to the public directory</p>
+        <p>• Files will be uploaded to the public uploads directory</p>
         <p>• Files with the same name will be overwritten</p>
       </div>
     </div>

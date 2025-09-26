@@ -28,11 +28,12 @@ type TContact = {
   icon: JSX.Element
 }
 
-const cvLinkEng = '/NguyenThanhTrung_Resume_Frontend_en.pdf'
-const cvLinkVi = '/NguyenThanhTrung_Resume_Frontend_vi.pdf'
-
 const getCvLink = (locale: string) => {
-  return locale === LANG_VI ? cvLinkVi : cvLinkEng
+  const filename =
+    locale === LANG_VI
+      ? 'NguyenThanhTrung_Resume_Frontend_vi.pdf'
+      : 'NguyenThanhTrung_Resume_Frontend_en.pdf'
+  return `/api/download/${filename}`
 }
 
 const contacts: TContact[] = [

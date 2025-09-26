@@ -1,5 +1,0 @@
-User-Agent: *
-Allow: /
-Disallow: /private/
-
-Sitemap: https://trung07-oc-profile.vercel.app/sitemap.xml

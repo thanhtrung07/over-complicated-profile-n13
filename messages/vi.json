@@ -96,7 +96,8 @@
     "skills": "Kỹ năng",
     "interests": "Sở thích",
     "theEnd": "Lời kết",
-    "switchLang": "Chuyển đổi ngôn ngữ"
+    "switchLang": "Chuyển đổi ngôn ngữ",
+    "toggleMenu": "Chuyển đổi menu điều hướng"
   },
   "NotFound": {
     "title": "Whoops!!!",

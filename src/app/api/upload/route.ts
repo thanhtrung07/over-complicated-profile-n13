@@ -44,9 +44,9 @@ export async function POST(request: NextRequest) {
     const bytes = await file.arrayBuffer()
     const buffer = Buffer.from(bytes)
 
-    // Save file to public directory
-    const publicPath = join(process.cwd(), 'public', file.name)
-    await writeFile(publicPath, buffer)
+    // Save file to public/uploads directory
+    const uploadPath = join(process.cwd(), 'public/uploads', file.name)
+    await writeFile(uploadPath, buffer)
 
     return NextResponse.json({
       message: 'File uploaded successfully',

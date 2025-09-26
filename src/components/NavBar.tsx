@@ -10,6 +10,7 @@ import { JSX, useEffect, useState } from 'react'
 import AsymCurveDivider from './AsymCurveDivider'
 import SwitchLang from './SwitchLang'
 import SwitchTheme from './SwitchTheme'
+import UploadButton from './UploadButton'
 
 const linkLists = [
   ROUTES.about,
@@ -93,6 +94,7 @@ const NavBar = () => {
           <button
             onClick={() => setOpen(!open)}
             className="border-border dark:border-dark-border rounded-md border px-1 py-0.5"
+            aria-label={t('toggleMenu')}
           >
             <Menu className="h-6 w-6" />
           </button>
@@ -151,6 +153,7 @@ const NavBar = () => {
         <div className="hover-btns flex items-center space-x-4">
           <SwitchTheme isDark={!!isDark} onChange={_onChangeTheme} />
           <SwitchLang />
+          <UploadButton />
         </div>
       </div>
     </nav>
